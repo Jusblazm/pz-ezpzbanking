@@ -1,0 +1,12 @@
+module EZPZBanking
+{
+    character_trait_definition ezpzbanking:creditcardthief
+    {
+        IsProfessionTrait = false,
+        DisabledInMultiplayer = false,
+        CharacterTrait = ezpzbanking:creditcardthief,
+        Cost = 3,
+        UIName = UI_trait_CreditCardThief,
+        UIDescription = UI_trait_CreditCardThief_Description,
+    }
+}

@@ -1,0 +1,16 @@
+UI_ES = {
+    UI_trait_CreditCardThief = "Ladrón de tarjetas de crédito",
+    UI_trait_CreditCardThief_Description = "Eres un ladrón de tarjetas de crédito experimentado. +5 de margen en tu intento al introducir un PIN de una tarjeta robada en un cajero automático.",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "Confirmar",
+    UI_EZPZBanking_ATMUI_NoCardFound = "No hay tarjeta de crédito disponible",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "¡Tarjeta destruida!",
+    UI_EZPZBanking_ATMUI_Balance = "Saldo: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "Depositar",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "Retirar",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Cajero automático del Banco Knox",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "No hay tarjetas de crédito disponibles",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "Intentos:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecciona una tarjeta de crédito",
+}

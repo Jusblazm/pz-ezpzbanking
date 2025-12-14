@@ -1,0 +1,16 @@
+UI_PTBR = {
+    UI_trait_CreditCardThief = "Ladrão de Cartão de Crédito",
+    UI_trait_CreditCardThief_Description = "Você é um ladrão de cartões de crédito experiente. +5 de variação na sua tentativa ao digitar o PIN de um cartão roubado em um caixa eletrônico.",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "Confirmar",
+    UI_EZPZBanking_ATMUI_NoCardFound = "Nenhum cartão de crédito disponível",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "Cartão destruído!",
+    UI_EZPZBanking_ATMUI_Balance = "Saldo: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "Depositar",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "Sacar",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Caixa Eletrônico do Banco Knox",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Nenhum cartão de crédito disponível",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "Tentativas:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecione um cartão de crédito",
+}

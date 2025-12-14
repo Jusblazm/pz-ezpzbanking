@@ -1,0 +1,3 @@
+IGUI_NL = {
+    IGUI_EZPZBanking_PlayerText_CantReachATM = "Ik kan de geldautomaat niet bereiken",
+}

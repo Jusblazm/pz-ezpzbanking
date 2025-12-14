@@ -1,0 +1,50 @@
+name: Update Translation Table
+
+on:
+  push:
+    paths:
+      - 'EZPZBanking/42.13/media/lua/shared/Translate/**'
+      - 'scripts/update-readme.lua'
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Lua and dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y lua5.3 luarocks liblua5.3-dev
+        sudo luarocks install luafilesystem
+
+    - name: Run Lua script and generate table
+      run: lua scripts/update-readme.lua > table_section.md
+
+    - name: Inject table into README.md
+      run: |
+        awk '
+        BEGIN { in_section = 0 }
+        /<!-- AUTO-GENERATED-TABLE:START -->/ {
+          print; 
+          while ((getline line < "table_section.md") > 0) print line; 
+          in_section = 1; 
+          next 
+        }
+        /<!-- AUTO-GENERATED-TABLE:END -->/ { in_section = 0; print; next }
+        !in_section { print }
+        ' README.md > README.new && mv README.new README.md
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add README.md
+        if ! git diff --cached --quiet; then
+          git commit -m "updated translation progress table"
+          git push
+        else
+          echo "No changes to commit"
+        fi

@@ -1,0 +1,16 @@
+UI_CH = {
+    UI_trait_CreditCardThief = "信用卡竊賊",
+    UI_trait_CreditCardThief_Description = "你是經驗豐富的信用卡竊賊。在 ATM 為偷來的信用卡輸入 PIN 時，猜測偏差 +5。",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "提交",
+    UI_EZPZBanking_ATMUI_NoCardFound = "無可用信用卡",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "信用卡已毀損！",
+    UI_EZPZBanking_ATMUI_Balance = "餘額：$",
+    UI_EZPZBanking_ATMUI_DepositButton = "存款",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "提款",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Knox 銀行自動櫃員機",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "無可用信用卡",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "嘗試次數：",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "選擇信用卡",
+}

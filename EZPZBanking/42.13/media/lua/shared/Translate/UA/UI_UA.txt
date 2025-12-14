@@ -1,0 +1,16 @@
+UI_UA = {
+    UI_trait_CreditCardThief = "Крадій кредитних карток",
+    UI_trait_CreditCardThief_Description = "Ти — досвідчений крадій кредитних карток. Під час введення PIN-коду викраденої картки в банкоматі отримуєш +5 до розкиду здогадки.",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "Підтвердити",
+    UI_EZPZBanking_ATMUI_NoCardFound = "Кредитних карток немає",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "Карта знищена!",
+    UI_EZPZBanking_ATMUI_Balance = "Балланс: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "Вклад",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "Зняти",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Банкомат",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Немає доступних кредитних карток",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "Спроби:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Вибрати карту",
+}

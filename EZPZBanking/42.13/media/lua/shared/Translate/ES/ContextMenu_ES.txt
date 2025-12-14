@@ -1,0 +1,3 @@
+ContextMenu_ES = {
+    ContextMenu_EZPZBanking_ATM_UseATM = "Usar cajero automático",
+}

@@ -1,0 +1,3 @@
+IGUI_CH = {
+    IGUI_EZPZBanking_PlayerText_CantReachATM = "我無法使用這台自動櫃員機",
+}

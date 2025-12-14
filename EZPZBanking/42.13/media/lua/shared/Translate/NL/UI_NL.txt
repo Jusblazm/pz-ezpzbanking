@@ -1,0 +1,16 @@
+UI_NL = {
+    UI_trait_CreditCardThief = "Creditcarddief",
+    UI_trait_CreditCardThief_Description = "Je bent een doorgewinterde creditcarddief. +5 marge bij het raden van een pincode voor een gestolen creditcard aan een geldautomaat.",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "Bevestigen",
+    UI_EZPZBanking_ATMUI_NoCardFound = "Geen creditcard beschikbaar",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "Kaart vernietigd!",
+    UI_EZPZBanking_ATMUI_Balance = "Saldo: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "Storten",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "Opnemen",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Geldautomaat",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Geen creditcards beschikbaar",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "Pogingen:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecteer een creditcard",
+}

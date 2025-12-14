@@ -1,0 +1,16 @@
+UI_EN = {
+    UI_trait_CreditCardThief = "Credit Card Thief",
+    UI_trait_CreditCardThief_Description = "You're a seasoned credit card thief. +5 spread to your guess when entering a PIN for a stolen credit card at an ATM.",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "Submit",
+    UI_EZPZBanking_ATMUI_NoCardFound = "No Credit Card available",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "Card Destroyed!",
+    UI_EZPZBanking_ATMUI_Balance = "Balance: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "Deposit",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "Withdraw",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank ATM",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "No Credit Cards available",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "Attempts:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Select a Credit Card",
+}

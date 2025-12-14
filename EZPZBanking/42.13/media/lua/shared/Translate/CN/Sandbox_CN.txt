@@ -1,0 +1,5 @@
+Sandbox_CN = {
+    Sandbox_MailOrderCatalogs = "EZPZ 银行设置",
+    Sandbox_MailOrderCatalogs_OwnerPIN = "自动输入你卡片的 PIN",
+    Sandbox_MailOrderCatalogs_OwnerPIN_tooltip = "卡片属于你时，是否在 ATM 自动输入 PIN？",
+}

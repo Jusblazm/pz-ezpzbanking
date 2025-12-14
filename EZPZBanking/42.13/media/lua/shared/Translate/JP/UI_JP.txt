@@ -1,0 +1,16 @@
+UI_JP = {
+    UI_trait_CreditCardThief = "クレジットカード泥棒",
+    UI_trait_CreditCardThief_Description = "あなたは経験豊富なクレジットカード泥棒です。ATMで盗んだクレジットカードのPINを入力するとき、推測に+5の幅が加わります。",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "送信",
+    UI_EZPZBanking_ATMUI_NoCardFound = "クレジットカードがありません",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "カードが破壊されました！",
+    UI_EZPZBanking_ATMUI_Balance = "残高: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "預け入れ",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "引き出し",
+    UI_EZPZBanking_ATMUI_ATMTitle = "ノックス銀行ATM",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "利用可能なクレジットカードがありません",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "試行回数:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "クレジットカードを選択",
+}

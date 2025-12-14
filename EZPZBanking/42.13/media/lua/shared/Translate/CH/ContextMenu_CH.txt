@@ -1,0 +1,3 @@
+ContextMenu_CH = {
+    ContextMenu_EZPZBanking_ATM_UseATM = "使用自動櫃員機",
+}

@@ -1,0 +1,5 @@
+Sandbox_UA = {
+    Sandbox_EZPZBanking = "Налаштування банку EZPZ",
+    Sandbox_EZPZBanking_OwnerPIN = "Обхід PIN для вашої картки",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "Чи повинен PIN автоматично вводитися в банкоматі для вашої картки?",
+}

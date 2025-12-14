@@ -1,0 +1,5 @@
+Sandbox_CH = {
+    Sandbox_EZPZBanking = "EZPZ 銀行設定",
+    Sandbox_EZPZBanking_OwnerPIN = "自動輸入你卡片的 PIN",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "卡片屬於你時，是否在 ATM 自動輸入 PIN？",
+}
