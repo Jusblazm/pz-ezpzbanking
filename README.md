@@ -32,7 +32,7 @@ MailOrderCatalogs.RegisterATM(spriteName, facingDir)
 | 🇦🇷 Argentina            | ░░░░░░░░░░ 0% | 0/23     | ❌ Not Started |
 | 🏴 Catalan             | ░░░░░░░░░░ 0% | 0/23     | ❌ Not Started |
 | 🇹🇼 Traditional Chinese  | ██████████ 100% | 23/23     | ✅ Done      |
-| 🇨🇳 Simplified Chinese   | █████████░ 87% | 20/23     | 🔃 In Progress |
+| 🇨🇳 Simplified Chinese   | ██████████ 100% | 23/23     | ✅ Done      |
 | 🇨🇿 Czech                | ░░░░░░░░░░ 0% | 0/23     | ❌ Not Started |
 | 🇩🇰 Danish               | ░░░░░░░░░░ 0% | 0/23     | ❌ Not Started |
 | 🇩🇪 German               | ██████████ 100% | 23/23     | ✅ Done      |
