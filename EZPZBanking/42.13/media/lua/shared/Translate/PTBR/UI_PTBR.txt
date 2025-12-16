@@ -9,8 +9,16 @@ UI_PTBR = {
     UI_EZPZBanking_ATMUI_DepositButton = "Depositar",
     UI_EZPZBanking_ATMUI_WithdrawButton = "Sacar",
     UI_EZPZBanking_ATMUI_ATMTitle = "Caixa Eletrônico do Banco Knox",
+    UI_EZPZBanking_ATMUI_SettingsButton = "Configurações",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Nenhum cartão de crédito disponível",
     UI_EZPZBanking_CardSelectorUI_Attempts = "Tentativas:",
     UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecione um cartão de crédito",
+
+    UI_EZPZBanking_SettingsUI_Back = "Voltar",
+    UI_EZPZBanking_SettingsUI_Close = "Fechar",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "Reportar cartão roubado",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "Atualizar PIN",
+    UI_EZPZBanking_SettingsUI_PINError = "O PIN deve ter 2 dígitos",
+    UI_EZPZBanking_SettingsUI_OrderCard = "Solicitar novo cartão",
 }

@@ -119,14 +119,11 @@ function EZPZBanking_Utils.getAllCreditCards(player)
 end
 
 function EZPZBanking_Utils.getPlayerCard(player)
-    local descriptor = player:getDescriptor()
-    local fullName = descriptor:getForename() .. " " .. descriptor:getSurname()
     local cards = EZPZBanking_Utils.getAllCreditCards(player)
 
-    for _, item in ipairs(cards) do
-        local modData = item:getModData()
-        if modData and modData.owner == fullName then
-            return item
+    for _, card in ipairs(cards) do
+        if EZPZBanking_Utils.isCardOwner(player, card) then
+            return card
         end
     end
     return nil
@@ -135,6 +132,17 @@ end
 function EZPZBanking_Utils.getCard(player)
     local cards = EZPZBanking_Utils.getAllCreditCards(player)
     return cards[1] or nil
+end
+
+function EZPZBanking_Utils.isCardOwner(player, card)
+    if not player or not card then return false end
+
+    EZPZBanking_Utils.ensureCardHasData(card)
+    local modData = card:getModData()
+    local descriptor = player:getDescriptor()
+    local playerFullName = descriptor:getForename() .. " " .. descriptor:getSurname()
+
+    return modData.owner == playerFullName
 end
 
 function EZPZBanking_Utils.generateRandomPIN()
@@ -168,6 +176,19 @@ end
 
 function EZPZBanking_Utils.isAutomaticOwnerPINEnabled()
     return SandboxVars.MailOrderCatalogs and SandboxVars.MailOrderCatalogs.OwnerPIN == true
+end
+
+function EZPZBanking_Utils.canUseATMSettings()
+    local gameVersion = getCore():getVersionNumber()
+    local MailOrderCatalogs = nil
+
+    if gameVersion and tonumber(gameVersion) >= 42 then
+        MailOrderCatalogs = "\\JusMailOrderCatalogs"
+    else
+        MailOrderCatalogs = "JusMailOrderCatalogs"
+    end
+
+    return not getActivatedMods():contains(MailOrderCatalogs)
 end
 
 return EZPZBanking_Utils

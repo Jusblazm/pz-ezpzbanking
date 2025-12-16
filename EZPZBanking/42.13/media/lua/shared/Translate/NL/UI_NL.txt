@@ -9,8 +9,16 @@ UI_NL = {
     UI_EZPZBanking_ATMUI_DepositButton = "Storten",
     UI_EZPZBanking_ATMUI_WithdrawButton = "Opnemen",
     UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Geldautomaat",
+    UI_EZPZBanking_ATMUI_SettingsButton = "Instellingen",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Geen creditcards beschikbaar",
     UI_EZPZBanking_CardSelectorUI_Attempts = "Pogingen:",
     UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecteer een creditcard",
+
+    UI_EZPZBanking_SettingsUI_Back = "Terug",
+    UI_EZPZBanking_SettingsUI_Close = "Sluiten",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "Kaart als gestolen melden",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "Pincode bijwerken",
+    UI_EZPZBanking_SettingsUI_PINError = "De pincode moet uit 2 cijfers bestaan",
+    UI_EZPZBanking_SettingsUI_OrderCard = "Bestel een nieuwe kaart",
 }

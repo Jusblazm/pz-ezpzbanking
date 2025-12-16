@@ -9,8 +9,16 @@ UI_EN = {
     UI_EZPZBanking_ATMUI_DepositButton = "Deposit",
     UI_EZPZBanking_ATMUI_WithdrawButton = "Withdraw",
     UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank ATM",
+    UI_EZPZBanking_ATMUI_SettingsButton = "Settings",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "No Credit Cards available",
     UI_EZPZBanking_CardSelectorUI_Attempts = "Attempts:",
     UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Select a Credit Card",
+
+    UI_EZPZBanking_SettingsUI_Back = "Back",
+    UI_EZPZBanking_SettingsUI_Close = "Close",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "Report Card Stolen",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "Update PIN",
+    UI_EZPZBanking_SettingsUI_PINError = "PIN must be 2 digits",
+    UI_EZPZBanking_SettingsUI_OrderCard = "Order a New Card",
 }

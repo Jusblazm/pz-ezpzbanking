@@ -9,8 +9,16 @@ UI_IT = {
     UI_EZPZBanking_ATMUI_DepositButton = "Deposita",
     UI_EZPZBanking_ATMUI_WithdrawButton = "Preleva",
     UI_EZPZBanking_ATMUI_ATMTitle = "Bancomat Knox Bank",
+    UI_EZPZBanking_ATMUI_SettingsButton = "Impostazioni",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Nessuna carta di credito disponibile",
     UI_EZPZBanking_CardSelectorUI_Attempts = "Tentativi:",
     UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Seleziona una Carta di Credito",
+
+    UI_EZPZBanking_SettingsUI_Back = "Indietro",
+    UI_EZPZBanking_SettingsUI_Close = "Chiudi",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "Segnala Carta Rubata",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "Aggiorna PIN",
+    UI_EZPZBanking_SettingsUI_PINError = "Il PIN deve avere 2 cifre",
+    UI_EZPZBanking_SettingsUI_OrderCard = "Ordina una Nuova Carta",
 }

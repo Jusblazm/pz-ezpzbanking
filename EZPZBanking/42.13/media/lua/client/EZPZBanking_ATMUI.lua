@@ -3,6 +3,7 @@ EZPZBanking_ATMUI = {}
 
 local EZPZBanking_BankServer = require("EZPZBanking_BankServer")
 local EZPZBanking_Utils = require("EZPZBanking_Utils")
+local EZPZBanking_SettingsUI = require("EZPZBanking_SettingsUI")
 
 local ISCollapsableWindow = ISCollapsableWindow
 
@@ -35,8 +36,7 @@ function EZPZBanking_ATMUI.ATMWindow:createChildren()
     ISCollapsableWindow.createChildren(self)
 
     -- PIN entry box
-    local entryWidth = 100
-    self.pinEntry = ISTextEntryBox:new("", 10, 30, entryWidth, 25)
+    self.pinEntry = ISTextEntryBox:new("", 10, 30, 100, 25)
     self.pinEntry:initialise()
     self.pinEntry:instantiate()
     self.pinEntry:setOnlyNumbers(true)
@@ -45,12 +45,22 @@ function EZPZBanking_ATMUI.ATMWindow:createChildren()
     self:addChild(self.pinEntry)
 
     -- submit button
-    self.submitButton = ISButton:new(10 + entryWidth + 10, 30, 80, 25, getText("UI_EZPZBanking_ATMUI_SubmitButton"), self, function()
+    self.submitButton = ISButton:new(120, 30, 80, 25, getText("UI_EZPZBanking_ATMUI_SubmitButton"), self, function()
         self:onSubmitPIN()
     end)
     self.submitButton:initialise()
     self.submitButton:instantiate()
     self:addChild(self.submitButton)
+
+    -- simple settings button
+    if EZPZBanking_Utils.canUseATMSettings() and EZPZBanking_Utils.isCardOwner(self:getPlayer(), self:getCard()) then
+        self.settingsButton = ISButton:new(10, 65, 80, 25, getText("UI_EZPZBanking_ATMUI_SettingsButton"), self, function()
+            self:onOpenSettings()
+        end)
+        self.settingsButton:initialise()
+        self.settingsButton:instantiate()
+        self:addChild(self.settingsButton)
+    end
 
     -- placeholder
     -- self.unlockedLabel = ISLabel:new(10, 70, 20, "Access Granted", 1, 1, 1, 1, UIFont.Medium, true)
@@ -117,6 +127,9 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
         self.pin = true
         self.pinEntry:setVisible(false)
         self.submitButton:setVisible(false)
+        if self.settingsButton then
+            self.settingsButton:setVisible(false)
+        end
         if isOwner then
             modData.attempts = 0
         end
@@ -141,6 +154,18 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
     if isDebugEnabled() then
         EZPZBanking_BankServer.printAllAccounts()
     end
+end
+
+function EZPZBanking_ATMUI.ATMWindow:onOpenSettings()
+    local player = self:getPlayer()
+    local card = self:getCard()
+    if not player or player:isDead() then return end
+
+    self:setVisible(false)
+    self:removeFromUIManager()
+    EZPZBanking_ATMUI.instance = nil
+
+    EZPZBanking_SettingsUI.openSettingsUI(player, card, true)
 end
 
 function EZPZBanking_ATMUI.ATMWindow:createBankUI()

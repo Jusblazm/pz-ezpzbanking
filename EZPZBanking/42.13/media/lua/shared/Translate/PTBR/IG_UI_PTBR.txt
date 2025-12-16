@@ -1,3 +1,4 @@
 IGUI_PTBR = {
     IGUI_EZPZBanking_PlayerText_CantReachATM = "Não consigo alcançar o caixa eletrônico",
+    IGUI_EZPZBanking_PlayerText_UseComputerForBanking = "Devo usar um computador para modificar minhas configurações bancárias",
 }

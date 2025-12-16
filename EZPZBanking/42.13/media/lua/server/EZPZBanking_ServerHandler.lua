@@ -152,3 +152,30 @@ Events.OnClientCommand.Add(function(module, command, player, args)
         EZPZBanking_BankServer.withdraw(accountID, amount)
     end
 end)
+
+Events.OnClientCommand.Add(function(module, command, player, args)
+    if module == "EZPZBanking" and command == "OrderCreditCard" then
+        if not player or player:isDead() then return end
+        local inv = player:getInventory()
+        local item = inv:AddItem("Base.CreditCard")
+        
+        local owner = nil
+        local desc = player:getDescriptor()
+        if desc then
+            owner = desc:getForename() .. " " .. desc:getSurname()
+            item:setName("Credit Card: " .. owner)
+        end
+        local modData = item:getModData()
+        modData.owner = owner
+        modData.accountID = player:getSteamID() .. "_" .. owner
+        modData.last4 = tostring(ZombRand(1000, 9999))
+        modData.pin = "11"
+        modData.isStolen = false
+        modData.attempts = 0
+        modData.websiteURL = "knoxbank.com/account"
+
+        EZPZBanking_BankServer.getOrCreateAccount(player)
+        -- self:setCard(item)
+        -- self:loadWebsite("knoxbank.com")
+    end
+end)

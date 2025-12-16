@@ -1,5 +1,4 @@
 -- EZPZBanking_CreditCardStart
-
 local function giveCreditCardOnStart(playerIndex, playerObj)
     if not playerObj or playerObj:isDead() then return end
 

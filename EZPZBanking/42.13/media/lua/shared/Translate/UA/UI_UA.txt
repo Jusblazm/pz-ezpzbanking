@@ -9,8 +9,16 @@ UI_UA = {
     UI_EZPZBanking_ATMUI_DepositButton = "Вклад",
     UI_EZPZBanking_ATMUI_WithdrawButton = "Зняти",
     UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Банкомат",
+    UI_EZPZBanking_ATMUI_SettingsButton = "Налаштування",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Немає доступних кредитних карток",
     UI_EZPZBanking_CardSelectorUI_Attempts = "Спроби:",
     UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Вибрати карту",
+
+    UI_EZPZBanking_SettingsUI_Back = "Назад",
+    UI_EZPZBanking_SettingsUI_Close = "Закрити",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "Повідомити про крадіжку картки",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "Оновити PIN",
+    UI_EZPZBanking_SettingsUI_PINError = "PIN має складатися з 2 цифр",
+    UI_EZPZBanking_SettingsUI_OrderCard = "Замовити нову картку",
 }

@@ -1,6 +1,8 @@
 -- EZPZBanking_AccessATMAction
 require "TimedActions/ISBaseTimedAction"
 
+local EZPZBanking_Utils = require("EZPZBanking_Utils")
+
 EZPZBanking_AccessATMAction = ISBaseTimedAction:derive("EZPZBanking_AccessATMAction")
 
 function EZPZBanking_AccessATMAction:isValid()
@@ -30,6 +32,12 @@ function EZPZBanking_AccessATMAction:perform()
         EZPZBanking_CardSelectorUI.openSelectorUI(self.character)
     elseif #self.cards == 1 then
         EZPZBanking_ATMUI.openATMUI(self.character, self.cards[1])
+    else
+        if EZPZBanking_Utils.canUseATMSettings() then
+            EZPZBanking_SettingsUI.openSettingsUI(self.character, nil, false)
+        else
+            self.character:Say(getText("IGUI_EZPZBanking_PlayerText_UseComputerForBanking"))
+        end
     end
     ISBaseTimedAction.perform(self)
 end

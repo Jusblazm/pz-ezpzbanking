@@ -9,8 +9,16 @@ UI_CN = {
     UI_EZPZBanking_ATMUI_DepositButton = "存款",
     UI_EZPZBanking_ATMUI_WithdrawButton = "取款",
     UI_EZPZBanking_ATMUI_ATMTitle = "Knox 银行自动取款机",
+    UI_EZPZBanking_ATMUI_SettingsButton = "设置",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "无可用信用卡",
     UI_EZPZBanking_CardSelectorUI_Attempts = "尝试次数：",
     UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "选择信用卡",
+
+    UI_EZPZBanking_SettingsUI_Back = "返回",
+    UI_EZPZBanking_SettingsUI_Close = "关闭",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "报告卡片被盗",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "更新 PIN",
+    UI_EZPZBanking_SettingsUI_PINError = "PIN 必须为 2 位数",
+    UI_EZPZBanking_SettingsUI_OrderCard = "申请新卡",
 }

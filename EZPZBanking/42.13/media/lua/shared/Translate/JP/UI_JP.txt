@@ -9,8 +9,16 @@ UI_JP = {
     UI_EZPZBanking_ATMUI_DepositButton = "預け入れ",
     UI_EZPZBanking_ATMUI_WithdrawButton = "引き出し",
     UI_EZPZBanking_ATMUI_ATMTitle = "ノックス銀行ATM",
+    UI_EZPZBanking_ATMUI_SettingsButton = "設定",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "利用可能なクレジットカードがありません",
     UI_EZPZBanking_CardSelectorUI_Attempts = "試行回数:",
     UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "クレジットカードを選択",
+
+    UI_EZPZBanking_SettingsUI_Back = "戻る",
+    UI_EZPZBanking_SettingsUI_Close = "閉じる",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "カード盗難を報告",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "PINを更新",
+    UI_EZPZBanking_SettingsUI_PINError = "PINは2桁でなければなりません",
+    UI_EZPZBanking_SettingsUI_OrderCard = "新しいカードを注文",
 }
