@@ -19,6 +19,20 @@ function EZPZBanking_BankServer.ensureData()
     return bankData
 end
 
+local function saveData()
+    local bankData = EZPZBanking_BankServer.ensureData()
+    ModData.transmit("BankAccounts")
+end
+
+local function loadData()
+    local bankData = ModData.get("BankAccounts")
+    if bankData and bankData.accounts then
+        return bankData
+    else
+        return EZPZBanking_BankServer.ensureData()
+    end
+end
+
 function EZPZBanking_BankServer.getOrCreateAccount(player)
     local bankData = EZPZBanking_BankServer.ensureData()
     local id = EZPZBanking_BankServer.getAccountID(player)
@@ -125,5 +139,8 @@ function EZPZBanking_BankServer.printAllAccounts()
         print("---------------------------")
     end
 end
+
+Events.EveryHours.Add(saveData)
+Events.OnInitGlobalModData.Add(loadData)
 
 return EZPZBanking_BankServer

@@ -18,27 +18,27 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             end
         end
 
+        local inv = player:getInventory()
         local item = inv:AddItem("Base.CreditCard")
-        if item then
-            local owner = nil
-            local desc = player:getDescriptor()
-            if desc then
-                owner = desc:getForename() .. " " .. desc:getSurname()
-                item:setName("Credit Card: " .. owner)
-            end
-            local modData = item:getModData()
-            modData.owner = owner
-            modData.accountID = player:getSteamID() .. "_" .. owner
-            modData.last4 = tostring(ZombRand(1000, 9999))
-            modData.pin = "11"
-            modData.isStolen = false
-            modData.attempts = 0
-            modData.websiteURL = "knoxbank.com/account"
-
-            EZPZBanking_BankServer.getOrCreateAccount(player)
-
-            player:sendObjectChange("addItem", { item = item })
+        
+        local owner = nil
+        local desc = player:getDescriptor()
+        if desc then
+            owner = desc:getForename() .. " " .. desc:getSurname()
+            item:setName("Credit Card: " .. owner)
         end
+        local modData = item:getModData()
+        modData.owner = owner
+        modData.accountID = player:getSteamID() .. "_" .. owner
+        modData.last4 = tostring(ZombRand(1000, 9999))
+        modData.pin = "11"
+        modData.isStolen = false
+        modData.attempts = 0
+        modData.websiteURL = "knoxbank.com/account"
+
+        EZPZBanking_BankServer.getOrCreateAccount(player)
+        sendAddItemToContainer(inv, item)
+        syncItemModData()
         playerData.hasCreditCard = true
     end
 end)
@@ -46,6 +46,18 @@ end)
 
 Events.OnClientCommand.Add(function(module, command, player, args)
     if module ~= "EZPZBanking" or not args then return end
+
+    if command == "RequestAccountData" then
+
+        local account = EZPZBanking_BankServer.getAccountByID(args.accountID)
+        if not account then return end
+        
+        sendServerCommand(player, "EZPZBanking", "AccountUpdated", {
+            accountID = account.accountID,
+            balance = account.balance
+        })
+        return
+    end
 
     local accountID = args.accountID
     local amount = args.amount
@@ -109,15 +121,18 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             local bundle, container = entry.item, entry.container
             if bundle then
                 if remaining >= 100 then
-                    container:Remove(bundle)
                     deposited = deposited + 100
                     remaining = remaining - 100
+                    container:Remove(bundle)
+                    sendRemoveItemFromContainer(container, bundle)
                 else
                     container:Remove(bundle)
+                    sendRemoveItemFromContainer(container, bundle)
                     deposited = deposited + remaining
                     local leftover = 100 - remaining
                     for j=1, leftover do
                         container:AddItem("Base.Money")
+                        sendAddItemToContainer(container, "Base.Money")
                     end
                     remaining = 0
                 end
@@ -128,28 +143,45 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             if remaining <= 0 then break end
             local single, container = entry.item, entry.container
             if single then
-                container:Remove(single)
                 deposited = deposited + 1
                 remaining = remaining - 1
+                container:Remove(single)
+                sendRemoveItemFromContainer(container, single)
             end
         end
 
         if deposited > 0 then
             EZPZBanking_BankServer.deposit(accountID, deposited)
+            local updatedAccount = EZPZBanking_BankServer.getAccountByID(accountID)
+            sendServerCommand(player, "EZPZBanking", "AccountUpdated", {
+                accountID = accountID,
+                balance = updatedAccount.balance
+            })
         end
     elseif command == "WithdrawMoney" then
         if account.balance < amount then return end
 
+        local inv = player:getInventory()
         local remaining = amount
+
         while remaining >= 100 do
-            player:getInventory():AddItem("Base.MoneyBundle")
+            local bundle = instanceItem("Base.MoneyBundle")
+            inv:AddItem(bundle)
+            sendAddItemToContainer(inv, bundle)
             remaining = remaining - 100
         end
         while remaining > 0 do
-            player:getInventory():AddItem("Base.Money")
+            local single = instanceItem("Base.Money")
+            inv:AddItem(single)
+            sendAddItemToContainer(inv, single)
             remaining = remaining - 1
         end
         EZPZBanking_BankServer.withdraw(accountID, amount)
+        local updatedAccount = EZPZBanking_BankServer.getAccountByID(accountID)
+        sendServerCommand(player, "EZPZBanking", "AccountUpdated", {
+            accountID = accountID,
+            balance = updatedAccount.balance
+        })
     end
 end)
 
@@ -175,7 +207,7 @@ Events.OnClientCommand.Add(function(module, command, player, args)
         modData.websiteURL = "knoxbank.com/account"
 
         EZPZBanking_BankServer.getOrCreateAccount(player)
-        -- self:setCard(item)
-        -- self:loadWebsite("knoxbank.com")
+        sendAddItemToContainer(inv, item)
+        syncItemModData()
     end
 end)

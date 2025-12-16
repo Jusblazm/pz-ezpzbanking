@@ -61,11 +61,6 @@ function EZPZBanking_ATMUI.ATMWindow:createChildren()
         self.settingsButton:instantiate()
         self:addChild(self.settingsButton)
     end
-
-    -- placeholder
-    -- self.unlockedLabel = ISLabel:new(10, 70, 20, "Access Granted", 1, 1, 1, 1, UIFont.Medium, true)
-    -- self.unlockedLabel:setVisible(false)
-    -- self:addChild(self.unlockedLabel)
 end
 
 function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
@@ -318,6 +313,9 @@ function EZPZBanking_ATMUI.openATMUI(player, card)
         panel:addChild(noCardLabel)
         return
     end
+
+    local modData = card:getModData()
+    sendClientCommand("EZPZBanking", "RequestAccountData", { accountID = modData.accountID })
 
     local width = 300
     local height = 200
