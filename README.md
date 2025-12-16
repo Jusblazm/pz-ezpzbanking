@@ -14,12 +14,12 @@ Please check the Steam Workshop page for full details.
 This is built as a **framework**. You can easily add new ATMs that will gain automatic functionality for EZPZ Banking.
 
 ### API for Modders
-These are the **official functions** your mod can call to interact with Mail Order Catalogs.
+These are the **official functions** your mod can call to interact with EZPZ Banking.
 You do **not** need to repack or include this mod to use them.
 
 ### Available Functions
 ``` lua
-MailOrderCatalogs.RegisterATM(spriteName, facingDir)
+EZPZBanking_API.RegisterATM(spriteName, facingDir)
 -- Registers an ATM in the world.
 -- facingDir: 0 = North, 1 = East, 2 = South, 3 = West.
 ```
@@ -59,9 +59,6 @@ MailOrderCatalogs.RegisterATM(spriteName, facingDir)
 
 ### Translation Notice
 Translations are done via ChatGPT and checked with Google Translate. I do my best, but I'm sure there are some errors. If you would like to contribute please get in touch.
-
-## Translation Credits
-A hearty thank you to everyone who contributed to translations for EZPZ Banking.
 
 ## Support
 Come find me on discord! Be sure to grab the Project Zomboid Modding Role once you arrive.
