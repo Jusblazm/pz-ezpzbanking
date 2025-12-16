@@ -30,3 +30,15 @@ local function onGlobalKeyPressed(key)
 end
 
 Events.OnKeyPressed.Add(onGlobalKeyPressed)
+
+Events.OnServerCommand.Add(function(module, command, args)
+    if module ~= "EZPZBanking" then return end
+
+    if command == "AccountUpdated" then
+        require "EZPZBanking_BankServer"
+        local account = EZPZBanking_BankServer.getAccountByID(args.accountID)
+        if account then
+            account.balance = args.balance
+        end
+    end
+end)
