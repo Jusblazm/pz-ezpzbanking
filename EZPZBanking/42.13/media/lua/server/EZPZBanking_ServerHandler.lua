@@ -1,5 +1,6 @@
 -- EZPZBanking_ServerHandler
 local EZPZBanking_BankServer = require("EZPZBanking_BankServer")
+local EZPZBanking_Utils = require("EZPZBanking_Utils")
 
 Events.OnClientCommand.Add(function(module, command, player, args)
     if module == "EZPZBanking" and command == "GiveCreditCardOnStart" then
@@ -18,43 +19,79 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             end
         end
 
-        local inv = player:getInventory()
-        local item = inv:AddItem("Base.CreditCard")
-        
-        local owner = nil
-        local desc = player:getDescriptor()
-        if desc then
-            owner = desc:getForename() .. " " .. desc:getSurname()
-            item:setName("Credit Card: " .. owner)
-        end
-        local modData = item:getModData()
-        modData.owner = owner
-        modData.accountID = player:getSteamID() .. "_" .. owner
-        modData.last4 = tostring(ZombRand(1000, 9999))
-        modData.pin = "11"
-        modData.isStolen = false
-        modData.attempts = 0
-        modData.websiteURL = "knoxbank.com/account"
-
-        EZPZBanking_BankServer.getOrCreateAccount(player)
-        sendAddItemToContainer(inv, item)
-        syncItemModData()
+        EZPZBanking_Utils.CreateCreditCard(player)
         playerData.hasCreditCard = true
     end
 end)
 
+Events.OnClientCommand.Add(function(module, command, player, args)
+    if module == "EZPZBanking" and command == "OrderCreditCard" then
+        if not player or player:isDead() then return end
+        EZPZBanking_Utils.CreateCreditCard(player)
+    end
+end)
+
+Events.OnClientCommand.Add(function(module, command, player, args)
+    if module == "EZPZBanking" and command == "GetOrCreateAccount" then
+        if not player or not args.itemID then return end
+
+        local inv = player:getInventory()
+        local card = nil
+
+        for i=0, inv:getItems():size()-1 do
+            local item = inv:getItems():get(i)
+            if item:getID() == args.itemID then
+                card = item
+                print("found card on server side")
+                break
+            end
+        end
+
+        EZPZBanking_Utils.ensureCardHasData(card)
+        
+        local modData = card:getModData()
+        local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
+        print("I ran getOrCreateAccountByID")
+        syncItemModData(player, card)
+    end
+end)
+
+Events.OnClientCommand.Add(function(module, command, player, args)
+    if module == "EZPZBanking" and command == "SetPIN" then
+        if not args or not args.itemID or not args.pin then return end
+
+        local inv = player:getInventory()
+        local card = nil
+
+        for i=0, inv:getItems():size()-1 do
+            local item = inv:getItems():get(i)
+            if item:getID() == args.itemID then
+                card = item
+                print("found card on server side")
+                break
+            end
+        end
+
+        local modData = card:getModData()
+
+        EZPZBanking_BankServer.setPIN(modData, args.pin)
+        card:getModData().pin = args.pin
+        syncItemModData(player, card)
+    end
+end)
 
 Events.OnClientCommand.Add(function(module, command, player, args)
     if module ~= "EZPZBanking" or not args then return end
 
     if command == "RequestAccountData" then
-
         local account = EZPZBanking_BankServer.getAccountByID(args.accountID)
         if not account then return end
-        
-        sendServerCommand(player, "EZPZBanking", "AccountUpdated", {
+
+        sendServerCommand(player, "EZPZBanking", "AccountDetails", {
             accountID = account.accountID,
-            balance = account.balance
+            balance = account.balance,
+            owner = account.owner,
+            pin = account.pin
         })
         return
     end
@@ -182,32 +219,5 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             accountID = accountID,
             balance = updatedAccount.balance
         })
-    end
-end)
-
-Events.OnClientCommand.Add(function(module, command, player, args)
-    if module == "EZPZBanking" and command == "OrderCreditCard" then
-        if not player or player:isDead() then return end
-        local inv = player:getInventory()
-        local item = inv:AddItem("Base.CreditCard")
-        
-        local owner = nil
-        local desc = player:getDescriptor()
-        if desc then
-            owner = desc:getForename() .. " " .. desc:getSurname()
-            item:setName("Credit Card: " .. owner)
-        end
-        local modData = item:getModData()
-        modData.owner = owner
-        modData.accountID = player:getSteamID() .. "_" .. owner
-        modData.last4 = tostring(ZombRand(1000, 9999))
-        modData.pin = "11"
-        modData.isStolen = false
-        modData.attempts = 0
-        modData.websiteURL = "knoxbank.com/account"
-
-        EZPZBanking_BankServer.getOrCreateAccount(player)
-        sendAddItemToContainer(inv, item)
-        syncItemModData()
     end
 end)

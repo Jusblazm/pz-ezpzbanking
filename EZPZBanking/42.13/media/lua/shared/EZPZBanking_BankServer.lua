@@ -11,7 +11,8 @@ end
 function EZPZBanking_BankServer.ensureData()
     local bankData = ModData.get("BankAccounts")
     if not bankData then
-        ModData.add("BankAccounts", {accounts = {}})
+        ModData.add("BankAccounts", { accounts = {} })
+        ModData.transmit("BankAccounts")
         bankData = ModData.get("BankAccounts")
     elseif not bankData.accounts then
         bankData.accounts = {}
@@ -33,6 +34,7 @@ local function loadData()
     end
 end
 
+-- for player creation only
 function EZPZBanking_BankServer.getOrCreateAccount(player)
     local bankData = EZPZBanking_BankServer.ensureData()
     local id = EZPZBanking_BankServer.getAccountID(player)
@@ -65,20 +67,36 @@ function EZPZBanking_BankServer.getOrCreateAccountByID(modData)
         bankData.accounts[id] = {
             accountID = id,
             balance = startingBalance,
-            pin = pin or 11,
+            pin = pin or "11",
             owner = owner or "Unknown",
             isStolen = isStolen or false,
             attempts = attempts or 0
         }
         ModData.transmit("BankAccounts")
     else
-        bankData.accounts[id].pin = modData.pin or 11
+        bankData.accounts[id].pin = modData.pin or "11"
     end
+    ModData.transmit("BankAccounts")
+    return bankData.accounts[id]
+end
+
+function EZPZBanking_BankServer.getExistingAccountByID(modData)
+    local bankData = EZPZBanking_BankServer.ensureData()
+    local id = modData.accountID
+    local owner = modData.owner
+    local pin = modData.pin
+    local isStolen = modData.isStolen
+    local attempts = modData.attempts
+    
+    ModData.transmit("BankAccounts")
     return bankData.accounts[id]
 end
 
 function EZPZBanking_BankServer.getAccountByID(id)
+    -- local bankData = ModData.get("BankAccounts")
     local bankData = EZPZBanking_BankServer.ensureData()
+    -- if not bankData or not bankData.accounts then return nil end
+
     return bankData.accounts[id]
 end
 
@@ -105,40 +123,53 @@ function EZPZBanking_BankServer.withdraw(id, amount)
     return true
 end
 
-function EZPZBanking_BankServer.getBalance(modData)
-    local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
-    return account.balance or 0
+function EZPZBanking_BankServer.getBalanceByID(id)
+    local account = EZPZBanking_BankServer.getAccountByID(id)
+    return account and account.balance or 0
+end
+
+function EZPZBanking_BankServer.getBalance(card)
+    if not card then return 0 end
+
+    local modData = card:getModData()
+    if not modData or not modData.accountID then return 0 end
+
+    return EZPZBanking_BankServer.getBalanceByID(modData.accountID)
 end
 
 function EZPZBanking_BankServer.setBalance(modData, newBalance)
+    if not modData or not modData.accountID then return false end
+    if type(newBalance) ~= "number" then return false end
+
     local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
-    account.balance = newBalance
+    account.balance = math.max(0, newBalance)
+
     ModData.transmit("BankAccounts")
     return true
 end
 
-function EZPZBanking_BankServer.getPIN(modData)
-    local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
-    return account.pin or "Unknown"
-end
-
 function EZPZBanking_BankServer.setPIN(modData, newPin)
+    if not modData or not modData.accountID then return false end
+    if not newPin then return false end
+
     local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
-    account.pin = newPin
+    account.pin = tostring(newPin)
+
     ModData.transmit("BankAccounts")
+    return true
 end
 
-function EZPZBanking_BankServer.printAllAccounts()
-    local bankData = EZPZBanking_BankServer.ensureData()
-    print("=== All Bank Accounts ===")
-    for id, account in pairs(bankData.accounts) do
-        print("Account ID: ", id)
-        print("Owner: ", account.owner)
-        print("Balance: $", account.balance)
-        print("PIN: ", account.pin)
-        print("---------------------------")
-    end
-end
+-- function EZPZBanking_BankServer.printAllAccounts()
+--     local bankData = EZPZBanking_BankServer.ensureData()
+--     print("=== All Bank Accounts ===")
+--     for id, account in pairs(bankData.accounts) do
+--         print("Account ID: ", id)
+--         print("Owner: ", account.owner)
+--         print("Balance: $", account.balance)
+--         print("PIN: ", account.pin)
+--         print("---------------------------")
+--     end
+-- end
 
 Events.EveryHours.Add(saveData)
 Events.OnInitGlobalModData.Add(loadData)
