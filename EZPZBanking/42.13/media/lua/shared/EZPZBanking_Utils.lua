@@ -134,11 +134,41 @@ function EZPZBanking_Utils.getCard(player)
     return cards[1] or nil
 end
 
+function EZPZBanking_Utils.getCardByAccountID(player, accountID)
+    if not player or not accountID then return nil end
+
+    local cards = EZPZBanking_Utils.getAllCreditCards(player)
+    if not cards then return nil end
+
+    for _, card in ipairs(cards) do
+        if card and card:getType() == "CreditCard" then
+            local modData = card:getModData()
+            if modData and modData.accountID == accountID then
+                return card
+            end
+        end
+    end
+    return nil
+end
+
+function EZPZBanking_Utils.hasEZPZBankingModData(card)
+    if not card or card:getType() ~= "CreditCard" then return false end
+    
+    local modData = card:getModData()
+    if not modData then return false end
+
+    if modData.owner and modData.last4 and modData.attempts then
+        return true
+    end
+    return false
+end
+
 function EZPZBanking_Utils.isCardOwner(player, card)
     if not player or not card then return false end
 
-    EZPZBanking_Utils.ensureCardHasData(card)
+    -- EZPZBanking_Utils.ensureCardHasData(card)
     local modData = card:getModData()
+    if not modData then return false end
     local descriptor = player:getDescriptor()
     local playerFullName = descriptor:getForename() .. " " .. descriptor:getSurname()
 
@@ -151,6 +181,8 @@ function EZPZBanking_Utils.generateRandomPIN()
 end
 
 function EZPZBanking_Utils.ensureCardHasData(card)
+    if isClient() then return end
+
     local modData = card:getModData()
     if not modData.pin then
         modData.pin = EZPZBanking_Utils.generateRandomPIN()
@@ -172,6 +204,33 @@ function EZPZBanking_Utils.ensureCardHasData(card)
     if not modData.isStolen then
         modData.isStolen = false
     end
+end
+
+function EZPZBanking_Utils.CreateCreditCard(player)
+    if isClient() then return end
+    if not player or player:isDead() then return nil end
+
+    local inv = player:getInventory()
+    local item = inv:AddItem("Base.CreditCard")
+    
+    local owner = nil
+    local desc = player:getDescriptor()
+    if desc then
+        owner = desc:getForename() .. " " .. desc:getSurname()
+        item:setName("Credit Card: " .. owner)
+    end
+    local modData = item:getModData()
+    modData.owner = owner
+    modData.accountID = player:getSteamID() .. "_" .. owner
+    modData.last4 = tostring(ZombRand(1000, 9999))
+    modData.pin = "11"
+    modData.isStolen = false
+    modData.attempts = 0
+    modData.websiteURL = "knoxbank.com/account"
+
+    EZPZBanking_BankServer.getOrCreateAccount(player)
+    sendAddItemToContainer(inv, item)
+    syncItemModData(player, item)
 end
 
 function EZPZBanking_Utils.isAutomaticOwnerPINEnabled()

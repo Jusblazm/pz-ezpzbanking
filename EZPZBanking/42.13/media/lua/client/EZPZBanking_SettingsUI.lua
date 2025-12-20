@@ -63,7 +63,6 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
     y = y + self.pinErrorLabel:getHeight() + labelSpacing
 
     self.updatePinButton = ISButton:new(padding, y, 120, 25, getText("UI_EZPZBanking_SettingsUI_UpdatePIN"), self, function()
-        -- if not modData then return end
 
         local newPin = self.pinEntry:getInternalText()
         if #newPin ~= 2 or not tonumber(newPin) then
@@ -72,8 +71,11 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
         end
 
         self.pinErrorLabel:setVisible(false)
-        modData.pin = newPin
-        EZPZBanking_BankServer.setPIN(modData, newPin)
+        sendClientCommand("EZPZBanking", "SetPIN", { 
+            pin = newPin, 
+            itemID = card:getID(),
+            containerType = "inventory"
+        })
     end)
     self.updatePinButton:initialise()
     if not self.card then
@@ -95,9 +97,6 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
 
     y = y + btnH + 15
 
-    ----------------------------------------------------------------
-    -- REPORT STOLEN (PLACEHOLDER)
-    ----------------------------------------------------------------
     self.reportStolenButton = ISButton:new(padding, y, btnW, btnH, getText("UI_EZPZBanking_SettingsUI_ReportStolen"), self, function()
         print("[EZPZBanking] Debug: Card has been reported stolen!")
     end)
@@ -106,19 +105,13 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
     self:addChild(self.reportStolenButton)
 
     y = y + btnH + 15
-    ----------------------------------------------------------------
-    -- BACK BUTTON
-    ----------------------------------------------------------------
+
     self.backButton = ISButton:new(padding, y, 80, 25, getText("UI_EZPZBanking_SettingsUI_Back"), self, self.onBack)
     self.backButton:initialise()
     if not self.returnToATM or not self.card then
         self.backButton.enable = false
     end
     self:addChild(self.backButton)
-
-    -- self.closeButton = ISButton:new(padding + 80, y, 80, 25, getText("UI_EZPZBanking_SettingsUI_Close"), self, self.close)
-    -- self.closeButton:initialise()
-    -- self:addChild(self.closeButton)
 end
 
 function EZPZBanking_SettingsUI.SettingsWindow:onBack()

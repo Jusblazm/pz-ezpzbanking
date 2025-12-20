@@ -84,7 +84,6 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
     end
 
     local modData = card:getModData()
-    EZPZBanking_Utils.ensureCardHasData(card)
 
     local actualPinStr = modData.pin
     local actualPin = tonumber(actualPinStr)
@@ -147,7 +146,8 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
         end
     end
     if isDebugEnabled() then
-        EZPZBanking_BankServer.printAllAccounts()
+        -- EZPZBanking_BankServer.printAllAccounts()
+        print("I should print all the accounts here")
     end
 end
 
@@ -199,25 +199,11 @@ function EZPZBanking_ATMUI.ATMWindow:createBankUI()
 end
 
 function EZPZBanking_ATMUI.ATMWindow:updateBalanceLabel()
-    local player = self:getPlayer()
     local card = self:getCard()
     local account = EZPZBanking_BankServer.getAccountByID(card:getModData().accountID)
-    local balance = account and tonumber(account.balance or 0) or 0
+    local balance = account and tonumber(account.balance) or 0
     local formatBalance = string.format("%.2f", balance)
     self.balanceLabel:setName(getText("UI_EZPZBanking_ATMUI_Balance") .. formatBalance)
-end
-
-function EZPZBanking_ATMUI.ATMWindow:delayedBalanceUpdate(delayTicks)
-    local ticks = 0
-    
-    local function onTick()
-        ticks = ticks + 1
-        if ticks >= delayTicks then
-            Events.OnTick.Remove(onTick)
-            self:updateBalanceLabel()
-        end
-    end
-    Events.OnTick.Add(onTick)
 end
 
 function EZPZBanking_ATMUI.ATMWindow:delayBalanceUpdateUntil(expectedBalance, maxTicks)
@@ -235,7 +221,7 @@ function EZPZBanking_ATMUI.ATMWindow:delayBalanceUpdateUntil(expectedBalance, ma
         local account = EZPZBanking_BankServer.getAccountByID(card:getModData().accountID)
         if not account then return end
 
-        local serverBalance = tonumber(account.balance or 0)
+        local serverBalance = tonumber(account.balance) or 0
 
         if math.abs(serverBalance - expectedBalance) < 0.001 then
             Events.OnTick.Remove(onTick)
@@ -268,7 +254,6 @@ function EZPZBanking_ATMUI.ATMWindow:onDeposit()
         accountID = modData.accountID,
         amount = amount
     })
-    -- self:delayedBalanceUpdate(15)
     self:delayBalanceUpdateUntil(expectedBalance, 120)
 end
 
@@ -294,7 +279,6 @@ function EZPZBanking_ATMUI.ATMWindow:onWithdraw()
         accountID = modData.accountID,
         amount = amount
     })
-    -- self:delayedBalanceUpdate(15)
     self:delayBalanceUpdateUntil(expectedBalance, 120)
 end
 
@@ -333,9 +317,10 @@ function EZPZBanking_ATMUI.openATMUI(player, card)
 
     EZPZBanking_ATMUI.instance = panel
 
-    local modData = card:getModData()
-    EZPZBanking_Utils.ensureCardHasData(card)
-    local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
+    sendClientCommand(player, "EZPZBanking", "GetOrCreateAccount", {
+        itemID = card:getID(),
+        containerType = "inventory"
+    })
 
     if isDebugEnabled() then
         print("[EZPZBanking] Debug: Credit Card Owner: " .. tostring(modData.owner))
@@ -346,6 +331,7 @@ function EZPZBanking_ATMUI.openATMUI(player, card)
         local descriptor = player:getDescriptor()
         print("[EZPZBanking] Debug: I own this Credit Card: " .. tostring(modData.owner == descriptor:getForename() .. " " .. descriptor:getSurname()))
         print("[EZPZBanking] Debug: This Credit Card is stolen: " .. tostring(modData.isStolen))
+        print("[EZPZBanking] Debug: This Credit Card has a balance of: " .. tostring(EZPZBanking_BankServer.getBalance(card)))
     end
 end
 

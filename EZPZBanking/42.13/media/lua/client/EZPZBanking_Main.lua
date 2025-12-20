@@ -41,4 +41,27 @@ Events.OnServerCommand.Add(function(module, command, args)
             account.balance = args.balance
         end
     end
+
+    if command == "AccountDetails" then
+        require "EZPZBanking_BankServer"
+        local account = EZPZBanking_BankServer.getAccountByID(args.accountID)
+        if account then
+            account.balance = args.balance
+            account.owner = args.owner
+            account.pin = args.pin
+        end
+    end
 end)
+
+local function onInitGlobalModData()
+    ModData.request("BankAccounts")
+end
+
+local function onReceiveGlobalModData(module, data)
+    if module == "BankAccounts" then
+        ModData.add("BankAccounts", data)
+    end
+end
+
+Events.OnInitGlobalModData.Add(onInitGlobalModData)
+Events.OnReceiveGlobalModData.Add(onReceiveGlobalModData)
