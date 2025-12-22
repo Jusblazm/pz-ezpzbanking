@@ -210,7 +210,7 @@ function EZPZBanking_ATMUI.ATMWindow:delayBalanceUpdateUntil(expectedBalance, ma
     local ticks = 0
 
     local function onTick()
-        tick = ticks + 1
+        ticks = ticks + 1
 
         local card = self:getCard()
         if not card then
