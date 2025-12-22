@@ -1,0 +1,4 @@
+ItemName_JP = {
+    ItemName_Base.BankPreApproved = "事前承認済みクレジットオファー",
+    ItemName_Base.BankApprovedCardInside = "承認済みクレジットオファー（カード同封）",
+}

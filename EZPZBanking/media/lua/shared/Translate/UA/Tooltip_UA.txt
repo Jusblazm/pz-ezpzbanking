@@ -1,0 +1,8 @@
+Tooltip_UA = {
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Normal = "Введіть PIN",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Error = "PIN має складатися з 2 цифр",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect = "Невірний PIN. Спроби: ",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "Введіть суму",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "Недостатньо грошей для внесення",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "Недостатньо коштів",
+}

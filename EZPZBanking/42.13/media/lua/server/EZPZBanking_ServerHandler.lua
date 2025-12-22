@@ -117,6 +117,8 @@ Events.OnClientCommand.Add(function(module, command, player, args)
                 end
             end
         end
+
+        local inv = player:getInventory()
     
         local moneySingles = {}
         local moneyBundles = {}
@@ -168,8 +170,9 @@ Events.OnClientCommand.Add(function(module, command, player, args)
                     deposited = deposited + remaining
                     local leftover = 100 - remaining
                     for j=1, leftover do
-                        container:AddItem("Base.Money")
-                        sendAddItemToContainer(container, "Base.Money")
+                        local single = instanceItem("Base.Money")
+                        inv:AddItem(single)
+                        sendAddItemToContainer(inv, single)
                     end
                     remaining = 0
                 end

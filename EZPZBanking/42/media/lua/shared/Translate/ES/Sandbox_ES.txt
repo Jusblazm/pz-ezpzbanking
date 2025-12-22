@@ -1,0 +1,5 @@
+Sandbox_ES = {
+    Sandbox_EZPZBanking = "Configuración de banca EZPZ",
+    Sandbox_EZPZBanking_OwnerPIN = "Omitir PIN para tu tarjeta",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "¿Se debe introducir automáticamente el PIN en el cajero automático para una tarjeta que te pertenece?",
+}

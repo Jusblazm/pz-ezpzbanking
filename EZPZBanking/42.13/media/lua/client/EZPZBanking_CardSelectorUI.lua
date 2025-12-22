@@ -59,11 +59,11 @@ function EZPZBanking_CardSelectorUI.Window:createChildren()
             end
         end
     else
-        local loadingLabel = ISLabel:new(10, cardY, 20, "Loading...", 1, 1, 1, 1, UIFont.Medium, true)
+        local loadingLabel = ISLabel:new(10, cardY, 20, getText("UI_EZPZBanking_CardSelectorUI_Loading"), 1, 1, 1, 1, UIFont.Medium, true)
         self:addChild(loadingLabel)
         cardY = cardY + spacing
 
-        local refreshButton = ISButton:new(10, cardY, self.width - 20, 25, "Refresh", self, function()
+        local refreshButton = ISButton:new(10, cardY, self.width - 20, 25, getText("UI_EZPZBanking_CardSelectorUI_Refresh"), self, function()
             self:createChildren()
         end)
         refreshButton:initialise()

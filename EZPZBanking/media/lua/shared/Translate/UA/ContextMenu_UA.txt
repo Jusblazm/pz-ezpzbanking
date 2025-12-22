@@ -1,0 +1,4 @@
+ContextMenu_UA = {
+    ContextMenu_EZPZBanking_ATM_UseATM = "Використати банкомат",
+    ContextMenu_EZPZBanking_Inventory_OpenLetter = "Відкрити лист",
+}

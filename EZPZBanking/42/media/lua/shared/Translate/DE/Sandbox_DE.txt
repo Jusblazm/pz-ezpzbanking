@@ -1,0 +1,5 @@
+Sandbox_DE = {
+    Sandbox_EZPZBanking = "EZPZ-Bankeinstellungen",
+    Sandbox_EZPZBanking_OwnerPIN = "PIN-Umgehung für deine Karte",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "Soll die PIN für eine dir gehörende Karte am Geldautomaten automatisch eingegeben werden?",
+}

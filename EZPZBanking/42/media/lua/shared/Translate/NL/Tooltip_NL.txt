@@ -1,0 +1,8 @@
+Tooltip_NL = {
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Normal = "Voer je pincode in",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Error = "De pincode moet uit 2 cijfers bestaan",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect = "Onjuiste pincode. Pogingen: ",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "Voer bedrag in",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "Niet genoeg geld om te storten",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "Onvoldoende saldo",
+}

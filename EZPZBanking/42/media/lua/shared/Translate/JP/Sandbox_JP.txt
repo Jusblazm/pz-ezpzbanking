@@ -1,0 +1,5 @@
+Sandbox_JP = {
+    Sandbox_EZPZBanking = "EZPZ 銀行設定",
+    Sandbox_EZPZBanking_OwnerPIN = "自分のカード用PINスキップ",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "自分のカードならATMでPINが自動入力されますか？",
+}

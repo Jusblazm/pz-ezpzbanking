@@ -1,0 +1,4 @@
+ContextMenu_PTBR = {
+    ContextMenu_EZPZBanking_ATM_UseATM = "Usar caixa eletrônico",
+    ContextMenu_EZPZBanking_Inventory_OpenLetter = "Abrir Carta",
+}

@@ -1,0 +1,5 @@
+Sandbox_PTBR = {
+    Sandbox_EZPZBanking = "Configurações bancárias EZPZ",
+    Sandbox_EZPZBanking_OwnerPIN = "Ignorar PIN do seu cartão",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "O PIN deve ser inserido automaticamente no caixa eletrônico para um cartão que seja seu?",
+}

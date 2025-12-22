@@ -1,0 +1,5 @@
+Sandbox_NL = {
+    Sandbox_EZPZBanking = "EZPZ-bankinstellingen",
+    Sandbox_EZPZBanking_OwnerPIN = "PIN-bypass voor je kaart",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "Moet de pincode automatisch worden ingevoerd in de geldautomaat voor een kaart die van jou is?",
+}

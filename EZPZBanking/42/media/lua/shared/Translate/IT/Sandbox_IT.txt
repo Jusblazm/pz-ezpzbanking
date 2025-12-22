@@ -1,0 +1,5 @@
+Sandbox_IT = {
+    Sandbox_EZPZBanking = "Impostazioni bancarie EZPZ",
+    Sandbox_EZPZBanking_OwnerPIN = "Bypass PIN per la tua carta",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "Il PIN deve essere inserito automaticamente al bancomat per una carta che ti appartiene?",
+}

@@ -1,0 +1,4 @@
+IGUI_CN = {
+    IGUI_EZPZBanking_PlayerText_CantReachATM = "我无法使用这台自动取款机",
+    IGUI_EZPZBanking_PlayerText_UseComputerForBanking = "我应该使用电脑来修改我的银行设置",
+}

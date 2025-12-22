@@ -1,0 +1,4 @@
+ContextMenu_ES = {
+    ContextMenu_EZPZBanking_ATM_UseATM = "Usar cajero automático",
+    ContextMenu_EZPZBanking_Inventory_OpenLetter = "Abrir carta",
+}
