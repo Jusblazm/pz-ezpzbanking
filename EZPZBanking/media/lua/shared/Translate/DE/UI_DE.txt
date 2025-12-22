@@ -1,0 +1,26 @@
+UI_DE = {
+    UI_trait_CreditCardThief = "Kreditkarten-Dieb",
+    UI_trait_CreditCardThief_Description = "Du bist ein erfahrener Kreditkarten-Dieb. +5 Spielraum bei deinen Versuchen, eine PIN für eine gestohlene Kreditkarte am Geldautomaten einzugeben.",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "Bestätigen",
+    UI_EZPZBanking_ATMUI_NoCardFound = "Keine Kreditkarte verfügbar",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "Karte zerstört!",
+    UI_EZPZBanking_ATMUI_Balance = "Kontostand: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "Einzahlen",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "Abheben",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Geldautomat",
+    UI_EZPZBanking_ATMUI_SettingsButton = "Einstellungen",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Keine Kreditkarten verfügbar",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "Versuche:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Kreditkarte auswählen",
+    UI_EZPZBanking_CardSelectorUI_Loading = "Lädt...",
+    UI_EZPZBanking_CardSelectorUI_Refresh = "Aktualisieren",
+
+    UI_EZPZBanking_SettingsUI_Back = "Zurück",
+    UI_EZPZBanking_SettingsUI_Close = "Schließen",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "Karte als gestohlen melden",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "PIN aktualisieren",
+    UI_EZPZBanking_SettingsUI_PINError = "Die PIN muss 2-stellig sein",
+    UI_EZPZBanking_SettingsUI_OrderCard = "Neue Karte bestellen",
+}

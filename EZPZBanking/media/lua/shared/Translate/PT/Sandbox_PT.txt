@@ -1,0 +1,5 @@
+Sandbox_PT = {
+    Sandbox_EZPZBanking = "Definições bancárias EZPZ",
+    Sandbox_EZPZBanking_OwnerPIN = "Ignorar PIN para o seu cartão",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "O PIN deve ser introduzido automaticamente no ATM para um cartão que seja seu?",
+}

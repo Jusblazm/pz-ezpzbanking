@@ -1,0 +1,4 @@
+IGUI_IT = {
+    IGUI_EZPZBanking_PlayerText_CantReachATM = "Non riesco a raggiungere il bancomat",
+    IGUI_EZPZBanking_PlayerText_UseComputerForBanking = "Dovrei usare un computer per modificare le impostazioni bancarie",
+}

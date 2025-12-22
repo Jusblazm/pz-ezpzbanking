@@ -1,0 +1,5 @@
+Sandbox_EN = {
+    Sandbox_EZPZBanking = "EZPZ Banking Settings",
+    Sandbox_EZPZBanking_OwnerPIN = "PIN bypass for your card",
+    Sandbox_EZPZBanking_OwnerPIN_tooltip = "Should the PIN be automatically entered in the ATM for a card that belongs to you?",
+}

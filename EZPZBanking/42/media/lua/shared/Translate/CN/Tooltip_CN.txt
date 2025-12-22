@@ -1,0 +1,8 @@
+Tooltip_CN = {
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Normal = "输入你的 PIN",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Error = "PIN 必须为 2 位数",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect = "PIN 错误。尝试次数：",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "输入金额",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "存款金额不足",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "资金不足",
+}

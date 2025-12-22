@@ -166,7 +166,6 @@ end
 function EZPZBanking_Utils.isCardOwner(player, card)
     if not player or not card then return false end
 
-    -- EZPZBanking_Utils.ensureCardHasData(card)
     local modData = card:getModData()
     if not modData then return false end
     local descriptor = player:getDescriptor()

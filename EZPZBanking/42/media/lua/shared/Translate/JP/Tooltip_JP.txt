@@ -1,0 +1,8 @@
+Tooltip_JP = {
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Normal = "PINを入力してください",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Error = "PINは2桁でなければなりません",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect = "PINが間違っています。試行回数: ",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "金額を入力してください",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "預け入れるお金が不足しています",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "残高不足です",
+}

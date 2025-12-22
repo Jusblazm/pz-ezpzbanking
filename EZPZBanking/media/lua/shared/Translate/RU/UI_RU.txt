@@ -1,0 +1,26 @@
+UI_RU = {
+    UI_trait_CreditCardThief = "Вор кредитных карт",
+    UI_trait_CreditCardThief_Description = "Ты — опытный вор кредитных карт. При вводе PIN-кода украденной карты в банкомате получаешь +5 к разбросу догадки.",
+
+    UI_EZPZBanking_ATMUI_SubmitButton = "Подтвердить",
+    UI_EZPZBanking_ATMUI_NoCardFound = "Кредитных карт нет",
+    UI_EZPZBanking_ATMUI_CardDestroyed = "Карта уничтожена!",
+    UI_EZPZBanking_ATMUI_Balance = "Балланс: $",
+    UI_EZPZBanking_ATMUI_DepositButton = "Вклад",
+    UI_EZPZBanking_ATMUI_WithdrawButton = "Снять",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Банкомат",
+    UI_EZPZBanking_ATMUI_SettingsButton = "Настройки",
+
+    UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Нет доступных кредитных карт",
+    UI_EZPZBanking_CardSelectorUI_Attempts = "Попытки:",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Выбрать карту",
+    UI_EZPZBanking_CardSelectorUI_Loading = "Загрузка...",
+    UI_EZPZBanking_CardSelectorUI_Refresh = "Обновить",
+
+    UI_EZPZBanking_SettingsUI_Back = "Назад",
+    UI_EZPZBanking_SettingsUI_Close = "Закрыть",
+    UI_EZPZBanking_SettingsUI_ReportStolen = "Сообщить о краже карты",
+    UI_EZPZBanking_SettingsUI_UpdatePIN = "Обновить PIN",
+    UI_EZPZBanking_SettingsUI_PINError = "PIN должен состоять из 2 цифр",
+    UI_EZPZBanking_SettingsUI_OrderCard = "Заказать новую карту",
+}

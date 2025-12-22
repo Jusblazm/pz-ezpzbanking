@@ -1,0 +1,8 @@
+Tooltip_RU = {
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Normal = "Введите PIN",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Error = "PIN должен быть из 2 цифр",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect = "Неверный PIN. Попытки: ",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "Введите сумму",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "Недостаточно денег для внесения",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "Недостаточно средств",
+}

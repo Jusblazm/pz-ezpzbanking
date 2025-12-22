@@ -1,0 +1,33 @@
+module Base
+{
+	imports
+	{
+		Base
+	}
+
+	/******* JUNK - MAIL *******/
+	    
+    item BankPreApproved
+    {
+        DisplayCategory 	= Junk,
+        Weight 				= 0.1,
+        ItemType 			= base:literature,
+        Icon 				= Paperwork5,
+        StaticModel 		= Paperwork5,
+        WorldStaticModel 	= Paperwork5,
+        ReadType 			= newspaper,
+        Tags 				= base:uninteresting,
+    }
+    
+    item BankApprovedCardInside
+    {
+        DisplayCategory 	= Junk,
+        Weight 				= 0.1,
+        ItemType 			= base:literature,
+        Icon 				= Paperwork5,
+        StaticModel 		= Paperwork5,
+        WorldStaticModel 	= Paperwork5,
+        ReadType 			= newspaper,
+        Tags 				= base:uninteresting,
+    }
+}

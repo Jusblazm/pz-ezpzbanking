@@ -1,0 +1,4 @@
+IGUI_NL = {
+    IGUI_EZPZBanking_PlayerText_CantReachATM = "Ik kan de geldautomaat niet bereiken",
+    IGUI_EZPZBanking_PlayerText_UseComputerForBanking = "Ik moet een computer gebruiken om mijn bankinstellingen aan te passen",
+}

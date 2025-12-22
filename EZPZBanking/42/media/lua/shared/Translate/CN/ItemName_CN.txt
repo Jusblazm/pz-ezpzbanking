@@ -1,0 +1,4 @@
+ItemName_CN = {
+    ItemName_Base.BankPreApproved = "预先批准的信用卡优惠",
+    ItemName_Base.BankApprovedCardInside = "已批准的信用卡优惠（内含卡片）",
+}

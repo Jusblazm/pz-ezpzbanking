@@ -1,0 +1,4 @@
+ItemName_NL = {
+    ItemName_Base.BankPreApproved = "Vooraf goedgekeurd kredietaanbod",
+    ItemName_Base.BankApprovedCardInside = "Goedgekeurd kredietaanbod (kaart inbegrepen)",
+}

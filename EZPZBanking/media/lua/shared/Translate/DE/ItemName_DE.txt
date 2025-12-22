@@ -1,0 +1,4 @@
+ItemName_DE = {
+    ItemName_Base.BankPreApproved = "Vorab genehmigtes Kreditangebot",
+    ItemName_Base.BankApprovedCardInside = "Genehmigtes Kreditangebot (Karte enthalten)",
+}

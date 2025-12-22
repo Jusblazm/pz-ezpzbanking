@@ -1,0 +1,4 @@
+ItemName_UA = {
+    ItemName_Base.BankPreApproved = "Попередньо схвалена кредитна пропозиція",
+    ItemName_Base.BankApprovedCardInside = "Схвалена кредитна пропозиція (картка всередині)",
+}

@@ -1,0 +1,8 @@
+Tooltip_IT = {
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Normal = "Inserisci il tuo PIN",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Error = "Il PIN deve avere 2 cifre",
+    Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect = "PIN errato. Tentativi: ",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "Inserisci l'importo",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "Fondi insufficienti per il deposito",
+    Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "Fondi insufficienti",
+}
