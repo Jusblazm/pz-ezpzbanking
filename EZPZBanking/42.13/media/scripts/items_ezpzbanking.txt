@@ -38,7 +38,7 @@ module Base
         DisplayCategory     = SkillBook,
         ItemType            = base:literature,
         Weight              = 0.5,
-        Icon                = Magazine,
+        Icon                = CreditCardThiefMagazine,
         BoredomChange       = -20,
         StressChange        = -15,
         LearnedRecipes      = CreditCardThiefTrait,
