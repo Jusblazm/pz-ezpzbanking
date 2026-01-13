@@ -7,7 +7,7 @@ If found elsewhere, please report.
 * Adds functional ATMs.
 * Adds an ATM hacking minigame.
 * Adds new traits.
-* Integrates with [Hacking Skill](https://steamcommunity.com/sharedfiles/filedetails/?id=3539339798).
+* Integrates with [Hacking Skill](https://steamcommunity.com/sharedfiles/filedetails/?id=3539339798) and [Mail Order Catalogs](https://steamcommunity.com/sharedfiles/filedetails/?id=3555453653).
 
 Please check the Steam Workshop page for full details.
 
