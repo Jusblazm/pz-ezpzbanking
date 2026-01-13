@@ -42,7 +42,6 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             local item = inv:getItems():get(i)
             if item:getID() == args.itemID then
                 card = item
-                print("found card on server side")
                 break
             end
         end
@@ -51,7 +50,6 @@ Events.OnClientCommand.Add(function(module, command, player, args)
         
         local modData = card:getModData()
         local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
-        print("I ran getOrCreateAccountByID")
         syncItemModData(player, card)
     end
 end)
@@ -67,7 +65,6 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             local item = inv:getItems():get(i)
             if item:getID() == args.itemID then
                 card = item
-                print("found card on server side")
                 break
             end
         end
