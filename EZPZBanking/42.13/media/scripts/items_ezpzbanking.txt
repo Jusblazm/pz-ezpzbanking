@@ -10,8 +10,8 @@ module Base
     item BankPreApproved
     {
         DisplayCategory 	= Junk,
-        Weight 				= 0.1,
         ItemType 			= base:literature,
+        Weight 				= 0.1,
         Icon 				= Paperwork5,
         StaticModel 		= Paperwork5,
         WorldStaticModel 	= Paperwork5,
@@ -22,12 +22,30 @@ module Base
     item BankApprovedCardInside
     {
         DisplayCategory 	= Junk,
-        Weight 				= 0.1,
         ItemType 			= base:literature,
+        Weight 				= 0.1,
         Icon 				= Paperwork5,
         StaticModel 		= Paperwork5,
         WorldStaticModel 	= Paperwork5,
         ReadType 			= newspaper,
         Tags 				= base:uninteresting,
+    }
+
+    /******* LITERATURE - MAGAZINES *******/
+
+    item CreditCardThiefMagazine
+    {
+        DisplayCategory     = SkillBook,
+        ItemType            = base:literature,
+        Weight              = 0.5,
+        Icon                = Magazine,
+        BoredomChange       = -20,
+        StressChange        = -15,
+        LearnedRecipes      = CreditCardThiefTrait,
+        DisappearOnUse      = false,
+        StaticModel         = Magazine,
+        WorldStaticModel    = MagazineGround,
+        Tags                = base:magazine,
+        OnCreate            = SpecialLootSpawns.OnCreateRecipeMagazine,
     }
 }
