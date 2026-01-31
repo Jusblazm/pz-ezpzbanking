@@ -233,7 +233,7 @@ function EZPZBanking_Utils.CreateCreditCard(player)
 end
 
 function EZPZBanking_Utils.isAutomaticOwnerPINEnabled()
-    return SandboxVars.MailOrderCatalogs and SandboxVars.MailOrderCatalogs.OwnerPIN == true
+    return SandboxVars.EZPZBanking and SandboxVars.EZPZBanking.OwnerPIN == true
 end
 
 function EZPZBanking_Utils.canUseATMSettings()
