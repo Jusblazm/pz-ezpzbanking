@@ -1,8 +1,8 @@
 -- EZPZBanking_GydeTraitMagazines
 
 --[[
-    this patch adds a magazine for credit card thief 
-    in the same style as Gyde's Trait Magazines
+    this patch adds a trait magazine for EZPZ Banking 
+    traits in the same style as Gyde's Trait Magazines
 ]]
 
 local function addCreditCardThiefMagazine()
@@ -13,7 +13,7 @@ local function addCreditCardThiefMagazine()
     end
 
     if not GydeTraitMags or not GydeTraitMags.magazineTraits then
-        print("[EZPZBanking] Gyde Trait Magazines detected, but tables not yet available")
+        print("[EZPZBanking] General: Gyde Trait Magazines detected, but tables not yet available")
         return
     end
 

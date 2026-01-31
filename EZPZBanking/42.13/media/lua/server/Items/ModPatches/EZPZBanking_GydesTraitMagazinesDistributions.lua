@@ -45,7 +45,6 @@ Events.OnInitGlobalModData.Add(function()
     insertItem(ProceduralDistributions["list"]["BookstoreBooks"], magazineType, 1.2)
     insertItem(ProceduralDistributions["list"]["PostOfficeBooks"], magazineType, 0.4)
 
-
     insertItem(ProceduralDistributions["list"]["PoliceEvidence"], magazineType, 1)
     insertItem(ProceduralDistributions["list"]["PoliceLockers"], magazineType, 0.5)
     insertItem(ProceduralDistributions["list"]["CrateRandomJunk"], magazineType, 0.7)
