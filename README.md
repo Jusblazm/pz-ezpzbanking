@@ -31,30 +31,30 @@ EZPZBanking_API.RegisterATM(spriteName, facingDir)
 | 🇺🇸 English              | ██████████ 100% | 38/38     | ✅ Done      |
 | 🇦🇷 Argentina            | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🏴 Catalan             | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇹🇼 Traditional Chinese  | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇨🇳 Simplified Chinese   | █████████░ 95% | 36/38     | 🔃 In Progress |
+| 🇹🇼 Traditional Chinese  | ██████████ 100% | 38/38     | ✅ Done      |
+| 🇨🇳 Simplified Chinese   | ██████████ 100% | 38/38     | ✅ Done      |
 | 🇨🇿 Czech                | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇩🇰 Danish               | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇩🇪 German               | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇪🇸 Spanish              | █████████░ 95% | 36/38     | 🔃 In Progress |
+| 🇩🇪 German               | ██████████ 100% | 38/38     | ✅ Done      |
+| 🇪🇸 Spanish              | ██████████ 100% | 38/38     | ✅ Done      |
 | 🇫🇮 Finnish              | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇫🇷 French               | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇭🇺 Hungarian            | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇮🇩 Indonesian           | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇮🇹 Italian              | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇯🇵 Japanese             | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇰🇷 Korean               | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇳🇱 Dutch                | █████████░ 95% | 36/38     | 🔃 In Progress |
+| 🇯🇵 Japanese             | ██████████ 100% | 38/38     | ✅ Done      |
+| 🇰🇷 Korean               | ██████████ 100% | 38/38     | ✅ Done      |
+| 🇳🇱 Dutch                | ██████████ 100% | 38/38     | ✅ Done      |
 | 🇳🇴 Norwegian            | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇵🇭 Filipino             | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇵🇱 Polish               | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇵🇹 Portuguese           | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇧🇷 Brazilian Portuguese | █████████░ 95% | 36/38     | 🔃 In Progress |
+| 🇵🇹 Portuguese           | ██████████ 100% | 38/38     | ✅ Done      |
+| 🇧🇷 Brazilian Portuguese | ██████████ 100% | 38/38     | ✅ Done      |
 | 🇷🇴 Romanian             | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇷🇺 Russian              | █████████░ 95% | 36/38     | 🔃 In Progress |
+| 🇷🇺 Russian              | ██████████ 100% | 38/38     | ✅ Done      |
 | 🇹🇭 Thai                 | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
 | 🇹🇷 Turkish              | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇺🇦 Ukrainian            | █████████░ 95% | 36/38     | 🔃 In Progress |
+| 🇺🇦 Ukrainian            | ██████████ 100% | 38/38     | ✅ Done      |
 <!-- AUTO-GENERATED-TABLE:END -->
 
 ### Translation Notice
