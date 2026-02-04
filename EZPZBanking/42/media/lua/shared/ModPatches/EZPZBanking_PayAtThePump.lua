@@ -11,13 +11,14 @@ local function useBankAccountsInsteadOfPayAtThePumpCards()
 
     local original_RicksMLC_PayAtPumpAPI_reduceCreditBalances = RicksMLC_PayAtPumpAPI.reduceCreditBalances
 
-    function RicksMLC_PayAtPumpAPI.reduceCreditBalances(amount)
+    function RicksMLC_PayAtPumpAPI.reduceCreditBalances(character, amount)
         if not SandboxVars.RicksMLC_PayAtThePump.AllowCreditCards then return amount end
 
-        local player = getPlayer()
-        if not player then return amount end
+        -- local player = getPlayer()
+        -- if not player then return amount end
 
-        local itemContainer = player:getInventory()
+        -- local itemContainer = player:getInventory()
+        local itemContainer = character:getInventory()
         local itemList = itemContainer:getAllEval(RicksMLC_PayAtThePump.findValidCreditCardClosure)
 
         if SandboxVars.RicksMLC_PayAtThePump.AutoSearchForMoney and itemList:isEmpty() then
@@ -28,7 +29,7 @@ local function useBankAccountsInsteadOfPayAtThePumpCards()
             for i=0, itemList:size()-1 do
                 local card = itemList:get(i)
                 modData = card:getModData()
-                local balance = EZPZBanking_BankServer.getBalance(modData)
+                local balance = EZPZBanking_BankServer.getBalance(card)
 
                 if balance > 0 then
                     if balance >= amount then
@@ -64,8 +65,8 @@ local function useBankAccountsInsteadOfPayAtThePumpCards()
 
         --[[
             remove card name change for two reasons
-            1. messes up Mail Order Catalog bank accounts (could fix, but for this quick patch it's too much)
-            2. easy way to figure out if a card is worth hacking or not
+            1. messes up EZPZ Banking bank accounts (could fix, but for this quick patch it's too much)
+            2. easy way to figure out if a card is worth trying to hack or not
         ]]
 
         -- local creditCardName = creditCard:getDisplayName()
