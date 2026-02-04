@@ -1,4 +1,5 @@
 ItemName_DE = {
     ItemName_Base.BankPreApproved = "Vorab genehmigtes Kreditangebot",
     ItemName_Base.BankApprovedCardInside = "Genehmigtes Kreditangebot (Karte enthalten)",
+    ItemName_Base.CreditCardThiefMagazine = "Magazin: Knapp daneben ist auch getroffen"
 }
