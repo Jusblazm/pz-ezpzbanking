@@ -114,6 +114,8 @@ function EZPZBanking_CardSelectorUI.Window:onCardSelected(card)
 end
 
 function EZPZBanking_CardSelectorUI.openSelectorUI(player)
+    if EZPZBanking_CardSelectorUI.instance and EZPZBanking_CardSelectorUI.instance:isVisible() then return end
+    
     local width = 300
     local height = 500
     local x = getCore():getScreenWidth() / 2 - width / 2

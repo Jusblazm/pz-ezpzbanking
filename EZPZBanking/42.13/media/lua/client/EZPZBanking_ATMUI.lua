@@ -108,7 +108,7 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
             pinRange = math.floor(hackingLevel * 2)
         end
 
-        if player:hasTrait(EZPZBankingTraits.CreditCardThief) then
+        if player:hasTrait(EZPZBankingTraits.CreditCardThief) or player:hasTrait(EZPZBankingTraits.CreditCardThief2) then
             pinRange = pinRange + 5
         end
 
@@ -283,9 +283,7 @@ function EZPZBanking_ATMUI.ATMWindow:onWithdraw()
 end
 
 function EZPZBanking_ATMUI.openATMUI(player, card)
-    if EZPZBanking_ATMUI.instance and EZPZBanking_ATMUI.instance:isVisible() then
-        return
-    end
+    if EZPZBanking_ATMUI.instance and EZPZBanking_ATMUI.instance:isVisible() then return end
 
     card = card or EZPZBanking_Utils.getCard(player)
     if not card then

@@ -93,11 +93,15 @@ function EZPZBanking_BankServer.getExistingAccountByID(modData)
 end
 
 function EZPZBanking_BankServer.getAccountByID(id)
-    -- local bankData = ModData.get("BankAccounts")
     local bankData = EZPZBanking_BankServer.ensureData()
-    -- if not bankData or not bankData.accounts then return nil end
-
     return bankData.accounts[id]
+end
+
+function EZPZBanking_BankServer.getAccountByPlayer(player)
+    if not player then return nil end
+
+    local accountID = EZPZBanking_BankServer.getAccountID(player)
+    return EZPZBanking_BankServer.getAccountByID(accountID)
 end
 
 function EZPZBanking_BankServer.deposit(id, amount)

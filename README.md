@@ -6,6 +6,7 @@ If found elsewhere, please report.
 ## What This Mod Does
 * Adds functional ATMs.
 * Adds an ATM hacking minigame.
+* Adds new professions.
 * Adds new traits.
 * Integrates with [Hacking Skill](https://steamcommunity.com/sharedfiles/filedetails/?id=3539339798) and [Mail Order Catalogs](https://steamcommunity.com/sharedfiles/filedetails/?id=3555453653).
 
@@ -15,46 +16,62 @@ This is built as a **framework**. You can easily add new ATMs that will gain aut
 
 ### API for Modders
 These are the **official functions** your mod can call to interact with EZPZ Banking.
-You do **not** need to repack or include this mod to use them.
+You do **not** need to repack or include this mod to use them, but your mod must require EZPZ Banking.\
+Bank account functions are multiplayer ready, secure, and handle all money handling.
 
 ### Available Functions
 ``` lua
-EZPZBanking_API.RegisterATM(spriteName, facingDir)
+EZPZBanking_API.registerATM(spriteName, facingDir)
 -- Registers an ATM in the world.
 -- facingDir: 0 = North, 1 = East, 2 = South, 3 = West.
+
+EZPZBanking_API.deposit(player, amount)
+-- Deposits money into the player's bank account.
+-- Removes money from all inventories.
+-- Doesn't require the player to have their credit card to work.
+
+EZPZBanking_API.withdraw(player, amount)
+-- Withdraws money from the player's bank account.
+-- Adds money to main inventory.
+-- Doesn't require the player to have their credit card to work.
+
+EZPZBanking_API.giveMoney(player, amount)
+-- Deposits money into the player's bank account.
+-- Doesn't require actual money.
+-- Doesn't require the player to have their credit card to work.
 ```
 
 ## 🌐 Translation Progress
 <!-- AUTO-GENERATED-TABLE:START -->
 | Language                | Progress      | Completed | Status        |
 |-------------------------|---------------|-----------|---------------|
-| 🇺🇸 English              | ██████████ 100% | 38/38     | ✅ Done      |
-| 🇦🇷 Argentina            | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🏴 Catalan             | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇹🇼 Traditional Chinese  | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇨🇳 Simplified Chinese   | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇨🇿 Czech                | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇩🇰 Danish               | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇩🇪 German               | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇪🇸 Spanish              | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇫🇮 Finnish              | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇫🇷 French               | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇭🇺 Hungarian            | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇮🇩 Indonesian           | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇮🇹 Italian              | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇯🇵 Japanese             | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇰🇷 Korean               | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇳🇱 Dutch                | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇳🇴 Norwegian            | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇵🇭 Filipino             | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇵🇱 Polish               | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇵🇹 Portuguese           | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇧🇷 Brazilian Portuguese | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇷🇴 Romanian             | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇷🇺 Russian              | █████████░ 95% | 36/38     | 🔃 In Progress |
-| 🇹🇭 Thai                 | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇹🇷 Turkish              | ░░░░░░░░░░ 0% | 0/38     | ❌ Not Started |
-| 🇺🇦 Ukrainian            | █████████░ 95% | 36/38     | 🔃 In Progress |
+| 🇺🇸 English              | ██████████ 100% | 45/45     | ✅ Done      |
+| 🇦🇷 Argentina            | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🏴 Catalan             | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇹🇼 Traditional Chinese  | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇨🇳 Simplified Chinese   | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇨🇿 Czech                | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇩🇰 Danish               | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇩🇪 German               | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇪🇸 Spanish              | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇫🇮 Finnish              | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇫🇷 French               | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇭🇺 Hungarian            | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇮🇩 Indonesian           | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇮🇹 Italian              | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇯🇵 Japanese             | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇰🇷 Korean               | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇳🇱 Dutch                | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇳🇴 Norwegian            | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇵🇭 Filipino             | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇵🇱 Polish               | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇵🇹 Portuguese           | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇧🇷 Brazilian Portuguese | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇷🇴 Romanian             | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇷🇺 Russian              | ████████░░ 84% | 38/45     | 🔃 In Progress |
+| 🇹🇭 Thai                 | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇹🇷 Turkish              | ░░░░░░░░░░ 0% | 0/45     | ❌ Not Started |
+| 🇺🇦 Ukrainian            | ████████░░ 84% | 38/45     | 🔃 In Progress |
 <!-- AUTO-GENERATED-TABLE:END -->
 
 ### Translation Notice

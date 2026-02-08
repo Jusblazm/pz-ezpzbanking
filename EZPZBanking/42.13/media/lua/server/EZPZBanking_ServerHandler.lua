@@ -19,15 +19,106 @@ Events.OnClientCommand.Add(function(module, command, player, args)
             end
         end
 
-        EZPZBanking_Utils.CreateCreditCard(player)
+        EZPZBanking_Utils.createCreditCard(player)
         playerData.hasCreditCard = true
+    end
+end)
+
+Events.OnClientCommand.Add(function(module, command, player, args)
+    if module == "EZPZBanking" and command == "GiveBankManagerReward" then
+        if not player or player:isDead() then return end
+
+        local playerData = player:getModData()
+        if playerData.hasBankManagerReward then return end
+
+        local inv = player:getInventory()
+        EZPZBanking_Utils.giveBankManagerReward(player)
+        playerData.hasBankManagerReward = true
+    end
+end)
+
+Events.OnClientCommand.Add(function(module, command, player, args)
+    if module == "EZPZBanking" and command == "PickpocketZombie" then
+        require "Items/Distribution_BagsAndContainers"
+
+        if not player or player:isDead() then return end
+
+        local function FillWalletFromLootTable(wallet, lootTable)
+            if not wallet or not lootTable then return end
+
+            local uniqueItemsSpawned = {}
+
+            for i=1, lootTable.rolls or 1 do
+                local maxItems = ZombRand(1, 5)
+                local itemsChosen = 0
+
+                while itemsChosen < maxItems do
+                    local index = ZombRand(1, #lootTable.items / 2 + 1) * 2 - 1
+                    local itemName = lootTable.items[index]
+                    local chance = lootTable.items[index + 1]
+
+                    local canSpawn = true
+                    if (itemName == "IDcard_Female" or itemName == "IDcard_Male") and uniqueItemsSpawned[itemName] then
+                        canSpawn = false
+                    end
+                    
+                    if canSpawn and ZombRand(0, 100) < chance then
+                        walletContainer = wallet:getItemContainer()
+                        print("itemName", itemName)
+                        if itemName == "Money" then
+                            local moneyAmount = ZombRand(1, 6)
+                            for m=1, moneyAmount do
+                                local item = instanceItem("Base." .. itemName)
+                                walletContainer:AddItem(itemName)
+                                sendAddItemToContainer(walletContainer, item)
+                            end
+                        else
+                            local item = instanceItem("Base." .. itemName)
+                            walletContainer:AddItem(itemName)
+                            sendAddItemToContainer(walletContainer, item)
+                            if itemName == "IDcard_Female" or itemName == "IDcard_Male" then
+                                uniqueItemsSpawned[itemName] = true
+                            end
+                        end
+                        itemsChosen = itemsChosen + 1
+                    end
+                end
+            end
+        end
+
+        local inv = player:getInventory()
+
+        local walletItem = instanceItem("Base.Wallet")
+        local wallet = inv:AddItem(walletItem)
+        sendAddItemToContainer(inv, walletItem)
+
+        local lootTable = BagsAndContainers.Wallet
+        if args.female then
+            lootTable = BagsAndContainers.Wallet_Female
+        else
+            lootTable = BagsAndContainers.Wallet_Male
+        end
+
+        FillWalletFromLootTable(wallet, lootTable)
     end
 end)
 
 Events.OnClientCommand.Add(function(module, command, player, args)
     if module == "EZPZBanking" and command == "OrderCreditCard" then
         if not player or player:isDead() then return end
-        EZPZBanking_Utils.CreateCreditCard(player)
+        EZPZBanking_Utils.createCreditCard(player)
+    end
+end)
+
+Events.OnClientCommand.Add(function(module, command, player, args)
+    if module == "EZPZBanking" and command == "GiveAccountPayment" then
+        if not args then return end
+
+        local accountID = args.accountID
+        local amount = args.amount
+        if not accountID or type(amount) ~= "number" or amount <= 0 then return end
+
+        EZPZBanking_BankServer.deposit(accountID, amount)
     end
 end)
 

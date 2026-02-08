@@ -4,13 +4,13 @@ EZPZBanking_API = {}
 --- registers a new ATM sprite
 -- @param spriteName (string) The sprite name, e.g. "my_custom_atm_sprite"
 -- @param facingDir (number) The facing direction: 0 = North, 1 = East, 2 = South, 3 = West
-function EZPZBanking_API.RegisterATM(spriteName, facingDir)
+function EZPZBanking_API.registerATM(spriteName, facingDir)
     if not spriteName or type(spriteName) ~= "string" then
-        print("[EZPZBanking] Error -> Invalid spriteName passed to RegisterATM")
+        print("[EZPZBanking] Error: Invalid spriteName passed to registerATM")
         return
     end
     if type(facingDir) ~= "number" or facingDir < 0 or facingDir > 3 then
-        print("[EZPZBanking] Error -> Invalid facingDir passed to RegisterATM (must be 0=North, 1=East, 2=South, 3=West)")
+        print("[EZPZBanking] Error: Invalid facingDir passed to registerATM (must be 0=North, 1=East, 2=South, 3=West)")
         return
     end
 
