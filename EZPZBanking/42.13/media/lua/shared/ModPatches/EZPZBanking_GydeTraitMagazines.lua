@@ -6,7 +6,6 @@
 ]]
 
 local function addCreditCardThiefMagazine()
-
     if not getActivatedMods():contains("\\GydeTraitMags") then
         print("[EZPZBanking] General: Gyde Trait Magazines is not installed")
         return

@@ -39,12 +39,18 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
     local card = self:getCard()
 
     local padding = 10
-    local y = 30
+    local y = 10
     local btnW = 150
     local btnH = 25
     local labelSpacing = 6
 
     local modData = card and card:getModData() or nil
+
+    self.pinLabel = ISLabel:new(padding, y, 20, "Enter PIN", 1, 0.2, 0.2, 1, UIFont.Small, true)
+    self.pinLabel:initialise()
+    self:addChild(self.pinLabel)
+
+    y = y + 20
 
     self.pinEntry = ISTextEntryBox:new("", padding, y, 100, 25)
     self.pinEntry:initialise()
@@ -127,7 +133,7 @@ function EZPZBanking_SettingsUI.SettingsWindow:onBack()
 end
 
 function EZPZBanking_SettingsUI.openSettingsUI(player, card, returnToATM)
-    if EZPZBanking_SettingsUI.instance then return end
+    if EZPZBanking_SettingsUI.instance and EZPZBanking_SettingsUI.instance:isVisible() then return end
     if not player or player:isDead() then return end
 
     local width = 300

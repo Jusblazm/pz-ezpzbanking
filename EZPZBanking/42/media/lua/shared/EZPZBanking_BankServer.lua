@@ -11,7 +11,8 @@ end
 function EZPZBanking_BankServer.ensureData()
     local bankData = ModData.get("BankAccounts")
     if not bankData then
-        ModData.add("BankAccounts", {accounts = {}})
+        ModData.add("BankAccounts", { accounts = {} })
+        ModData.transmit("BankAccounts")
         bankData = ModData.get("BankAccounts")
     elseif not bankData.accounts then
         bankData.accounts = {}
@@ -60,12 +61,20 @@ function EZPZBanking_BankServer.getOrCreateAccountByID(modData)
     else
         bankData.accounts[id].pin = modData.pin or 11
     end
+    ModData.transmit("BankAccounts")
     return bankData.accounts[id]
 end
 
 function EZPZBanking_BankServer.getAccountByID(id)
     local bankData = EZPZBanking_BankServer.ensureData()
     return bankData.accounts[id]
+end
+
+function EZPZBanking_BankServer.getAccountByPlayer(player)
+    if not player then return nil end
+
+    local accountID = EZPZBanking_BankServer.getAccountID(player)
+    return EZPZBanking_BankServer.getAccountByID(accountID)
 end
 
 function EZPZBanking_BankServer.deposit(id, amount)

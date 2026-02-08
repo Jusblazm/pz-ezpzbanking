@@ -6,6 +6,7 @@ If found elsewhere, please report.
 ## What This Mod Does
 * Adds functional ATMs.
 * Adds an ATM hacking minigame.
+* Adds new professions.
 * Adds new traits.
 * Integrates with [Hacking Skill](https://steamcommunity.com/sharedfiles/filedetails/?id=3539339798) and [Mail Order Catalogs](https://steamcommunity.com/sharedfiles/filedetails/?id=3555453653).
 
@@ -15,13 +16,29 @@ This is built as a **framework**. You can easily add new ATMs that will gain aut
 
 ### API for Modders
 These are the **official functions** your mod can call to interact with EZPZ Banking.
-You do **not** need to repack or include this mod to use them.
+You do **not** need to repack or include this mod to use them, but your mod must require EZPZ Banking.\
+Bank account functions are multiplayer ready, secure, and handle all money handling.
 
 ### Available Functions
 ``` lua
-EZPZBanking_API.RegisterATM(spriteName, facingDir)
+EZPZBanking_API.registerATM(spriteName, facingDir)
 -- Registers an ATM in the world.
 -- facingDir: 0 = North, 1 = East, 2 = South, 3 = West.
+
+EZPZBanking_API.deposit(player, amount)
+-- Deposits money into the player's bank account.
+-- Removes money from all inventories.
+-- Doesn't require the player to have their credit card to work.
+
+EZPZBanking_API.withdraw(player, amount)
+-- Withdraws money from the player's bank account.
+-- Adds money to main inventory.
+-- Doesn't require the player to have their credit card to work.
+
+EZPZBanking_API.giveMoney(player, amount)
+-- Deposits money into the player's bank account.
+-- Doesn't require actual money.
+-- Doesn't require the player to have their credit card to work.
 ```
 
 ## 🌐 Translation Progress

@@ -1,1 +1,1 @@
-Recipes_PL = {}
+Recipe_PL = {}

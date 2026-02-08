@@ -205,7 +205,7 @@ function EZPZBanking_Utils.ensureCardHasData(card)
     end
 end
 
-function EZPZBanking_Utils.CreateCreditCard(player)
+function EZPZBanking_Utils.createCreditCard(player)
     if isClient() then return end
     if not player or player:isDead() then return nil end
 
@@ -216,7 +216,8 @@ function EZPZBanking_Utils.CreateCreditCard(player)
     local desc = player:getDescriptor()
     if desc then
         owner = desc:getForename() .. " " .. desc:getSurname()
-        item:setName("Credit Card: " .. owner)
+        -- item:setName("Credit Card: " .. owner)
+        item:setName("Credit Card (\"" .. owner .. "\")")
     end
     local modData = item:getModData()
     modData.owner = owner
@@ -230,6 +231,28 @@ function EZPZBanking_Utils.CreateCreditCard(player)
     EZPZBanking_BankServer.getOrCreateAccount(player)
     sendAddItemToContainer(inv, item)
     syncItemModData(player, item)
+end
+
+function EZPZBanking_Utils.giveBankManagerReward(player)
+    if isClient() then return end
+    if not player or player:isDead() then return nil end
+
+    local inv = player:getInventory()
+    local amount = ZombRand(20, 201)
+
+    local bundleCount = math.floor(amount / 100)
+    local singleCount = amount % 100
+
+    for i=1, bundleCount do
+        local bundle = instanceItem("Base.MoneyBundle")
+        inv:AddItem(bundle)
+        sendAddItemToContainer(inv, bundle)
+    end
+    for i=1, singleCount do
+        local single = instanceItem("Base.Money")
+        inv:AddItem(single)
+        sendAddItemToContainer(inv, single)
+    end
 end
 
 function EZPZBanking_Utils.isAutomaticOwnerPINEnabled()

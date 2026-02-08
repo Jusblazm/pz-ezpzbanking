@@ -1,1 +1,3 @@
-Recipes_IT = {}
+Recipe_IT = {
+    Recipe_CreditCardThiefTrait = "Tratto Ladro di Carte di Credito",
+}

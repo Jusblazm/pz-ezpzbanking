@@ -2,6 +2,7 @@
 require "EZPZBanking_ATMUI"
 require "EZPZBanking_CardSelectorUI"
 require "EZPZBanking_SettingsUI"
+require "EZPZBanking_ISEZPZBankingAdminUI"
 
 -- unified ESC key handler
 local function onGlobalKeyPressed(key)
@@ -25,6 +26,13 @@ local function onGlobalKeyPressed(key)
             EZPZBanking_SettingsUI.instance:setVisible(false)
             EZPZBanking_SettingsUI.instance:removeFromUIManager()
             EZPZBanking_SettingsUI.instance = nil
+        end
+
+        -- close ISEZPZBankingAdminUI
+        if EZPZBanking_ISEZPZBankingAdminUI.instance and EZPZBanking_ISEZPZBankingAdminUI.instance:isVisible() then
+            EZPZBanking_ISEZPZBankingAdminUI.instance:setVisible(false)
+            EZPZBanking_ISEZPZBankingAdminUI.instance:removeFromUIManager()
+            EZPZBanking_ISEZPZBankingAdminUI.instance = nil
         end
     end
 end
