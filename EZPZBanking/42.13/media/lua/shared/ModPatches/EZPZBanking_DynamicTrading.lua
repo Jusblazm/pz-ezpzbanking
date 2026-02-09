@@ -267,7 +267,7 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
 
     end
 
-    function DynamicTradingUI:getPlayerWealth(player)
+    function DT_TradingWindow:getPlayerWealth(player)
         if not player then return 0 end
 
         local accountID = EZPZBanking_BankServer.getAccountID(player)
