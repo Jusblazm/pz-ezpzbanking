@@ -245,4 +245,5 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
     print("[EZPZBanking] General: Dynamic Trading detected, allowing Dynamic Trading to use EZPZ Banking's bank accounts")
 end
 
+Events.OnGameStart.Add(patchDynamicTradingWithEZPZBankingAccounts)
 Events.OnServerStarted.Add(patchDynamicTradingWithEZPZBankingAccounts)
