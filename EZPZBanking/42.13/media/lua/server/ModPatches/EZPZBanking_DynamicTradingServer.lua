@@ -29,7 +29,7 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
     end
 
     function Commands.TradeTransaction(player, args)
-        local type = args.type
+        local transactionType = args.type
         local traderID = args.traderID
         local key = args.key
         local category = args.category or "Misc"
@@ -46,13 +46,24 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
         local scriptItem = getScriptManager():getItem(itemData.item)
         local safeDisplayName = scriptItem and scriptItem:getDisplayName() or "Unknown Item"
 
-        if type == "buy" then
-            -- 1. Calculate Price
-            local unitPrice = DynamicTrading.Economy.GetBuyPrice(key, data.globalHeat)
+        if transactionType == "buy" then
+            -- 1. Check Stock & Data
+            local stockEntry = trader.stocks[key]
+            local currentStock = 0
+            local customData = nil
+            
+            if type(stockEntry) == "table" then
+                currentStock = tonumber(stockEntry.qty) or 0
+                customData = stockEntry.customData
+            else
+                currentStock = tonumber(stockEntry) or 0
+            end
+
+            -- 2. Calculate Price
+            -- local unitPrice = DynamicTrading.Economy.GetBuyPrice(key, data.globalHeat)
+            local unitPrice = DynamicTrading.Economy.V1.GetBuyPrice(key, data.globalHeat, customData)
             local totalCost = unitPrice * clientQty
             
-            -- 2. Check Stock
-            local currentStock = trader.stocks[key] or 0
             if currentStock < clientQty then
                 SendResponse(player, "TransactionResult", { success=false, msg="Sold Out!" })
                 return
@@ -61,7 +72,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
             -- 3. Check Wealth
             local accountID = EZPZBanking_BankServer.getAccountID(player)
             if EZPZBanking_BankServer.getBalanceByID(accountID) < totalCost then
-                print("I do not have enough money to buy this. It cost me " .. totalCost .. "but I only have " .. EZPZBanking_BankServer.getBalanceByID(accountID))
                 SendResponse(player, "TransactionResult", { success=false, msg="Not enough cash!" })
                 return
             end
@@ -90,7 +100,7 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
                 SendResponse(player, "TransactionResult", { success=false, msg="Transaction Error" })
             end
 
-        elseif type == "sell" then
+        elseif transactionType == "sell" then
             -- 1. Locate specific physical item by ID
             -- [ROBUST FIX] We now find the item by the unique ID passed from the client
             local itemObj = inv:getItemById(args.itemID)
@@ -142,7 +152,8 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
 
             -- [NEW] Check Trader Budget
             local localCount = (trader.localDeflation and trader.localDeflation[key]) or 0
-            local unitPrice = DynamicTrading.Economy.GetSellPrice(itemObj, key, trader.archetype, data.globalHeat, localCount)
+            -- local unitPrice = DynamicTrading.Economy.GetSellPrice(itemObj, key, trader.archetype, data.globalHeat, localCount)
+            local unitPrice = DynamicTrading.Economy.V1.GetSellPrice(itemObj, key, trader.archetype, data.globalHeat, localCount)
             local totalGain = unitPrice * clientQty
 
             if (trader.budget or 0) < totalGain then
