@@ -3,7 +3,7 @@ local function giveBankManagerMoneyOnStart(playerIndex, playerObj)
     if not playerObj or playerObj:isDead() then return end
 
     local function sendNextTick()
-        if playerObj:getDescriptor():getCharacterProfession() ~= "ezpzbanking:bankmanager" then return end
+        if playerObj:getDescriptor():getCharacterProfession():getName() ~= "bankmanager" then return end
         local playerData = playerObj:getModData()
         if playerData.hasBankManagerReward then return end
 
