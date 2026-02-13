@@ -3,7 +3,7 @@ EZPZBanking_ATMUI = {}
 
 local EZPZBanking_BankServer = require("EZPZBanking_BankServer")
 local EZPZBanking_Utils = require("EZPZBanking_Utils")
-local EZPZBanking_SettingsUI = require("EZPZBanking_SettingsUI")
+local EZPZBanking_SettingsUI = require("ISUI/EZPZBanking_SettingsUI")
 
 local ISCollapsableWindow = ISCollapsableWindow
 
@@ -46,22 +46,12 @@ function EZPZBanking_ATMUI.ATMWindow:createChildren()
     self:addChild(self.pinEntry)
 
     -- submit button
-    self.submitButton = ISButton:new(10 + entryWidth + 10, 30, 80, 25, getText("UI_EZPZBanking_ATMUI_SubmitButton"), self, function()
+    self.submitButton = ISButton:new(10 + entryWidth + 10, 30, 80, 25, getText("UI_EZPZBanking_Generic_SubmitButton"), self, function()
         self:onSubmitPIN()
     end)
     self.submitButton:initialise()
     self.submitButton:instantiate()
     self:addChild(self.submitButton)
-
-    -- simple settings button
-    if EZPZBanking_Utils.canUseATMSettings() and EZPZBanking_Utils.isCardOwner(self:getPlayer(), self:getCard()) then
-        self.settingsButton = ISButton:new(10, 65, 80, 25, getText("UI_EZPZBanking_ATMUI_SettingsButton"), self, function()
-            self:onOpenSettings()
-        end)
-        self.settingsButton:initialise()
-        self.settingsButton:instantiate()
-        self:addChild(self.settingsButton)
-    end
 end
 
 function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
@@ -123,9 +113,6 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
         self.pin = true
         self.pinEntry:setVisible(false)
         self.submitButton:setVisible(false)
-        if self.settingsButton then
-            self.settingsButton:setVisible(false)
-        end
         if isOwner then
             modData.attempts = 0
         end
@@ -204,8 +191,7 @@ function EZPZBanking_ATMUI.ATMWindow:updateBalanceLabel()
     local card = self:getCard()
     local account = EZPZBanking_BankServer.getAccountByID(card:getModData().accountID)
     local balance = account and tonumber(account.balance or 0) or 0
-    local formatBalance = string.format("%.2f", balance)
-    self.balanceLabel:setName(getText("UI_EZPZBanking_ATMUI_Balance") .. formatBalance)
+    self.balanceLabel:setName(getText("UI_EZPZBanking_ATMUI_Balance") .. tostring(balance))
 end
 
 function EZPZBanking_ATMUI.ATMWindow:onDeposit()
@@ -213,6 +199,7 @@ function EZPZBanking_ATMUI.ATMWindow:onDeposit()
     if not amount or amount <= 0 then return end
 
     local player = self:getPlayer()
+    local inv = player:getInventory()
     local card = self:getCard()
     if not card then return end
 
@@ -220,93 +207,21 @@ function EZPZBanking_ATMUI.ATMWindow:onDeposit()
     local account = EZPZBanking_BankServer.getAccountByID(modData.accountID)
     if not account then return end
 
-    local function collectItemsOfType(container, typeName, results)
-        if not container then return end
-        local items = container:getItems()
-        for i=0, items:size()-1 do
-            local item = items:get(i)
-            if item:getType() == typeName then
-                table.insert(results, { item = item, container = container })
-            end
-            if item:IsInventoryContainer() then
-                collectItemsOfType(item:getInventory(), typeName, results)
-            end
-        end
-    end
-
-    local moneySingles = {}
-    local moneyBundles = {}
-
-    collectItemsOfType(player:getInventory(), "Money", moneySingles)
-    collectItemsOfType(player:getInventory(), "MoneyBundle", moneyBundles)
-
-    local worn = player:getWornItems()
-    if worn then
-        for i=0, worn:size()-1 do
-            local wornItem = worn:get(i):getItem()
-            if wornItem and wornItem:IsInventoryContainer() then
-                collectItemsOfType(wornItem:getInventory(), "Money", moneySingles)
-                collectItemsOfType(wornItem:getInventory(), "MoneyBundle", moneyBundles)
-            end
-        end
-    end
-
-    local primary = player:getPrimaryHandItem()
-    if primary and primary:IsInventoryContainer() then
-        collectItemsOfType(primary:getInventory(), "Money", moneySingles)
-        collectItemsOfType(primary:getInventory(), "MoneyBundle", moneyBundles)
-    end
-
-    local secondary = player:getSecondaryHandItem()
-    if secondary and secondary:IsInventoryContainer() then
-        collectItemsOfType(secondary:getInventory(), "Money", moneySingles)
-        collectItemsOfType(secondary:getInventory(), "MoneyBundle", moneyBundles)
-    end
-
-    local totalAvailable = #moneySingles + (#moneyBundles * 100)
-    if totalAvailable < 1 then
+    local moneyItems = inv:getAllType("Money")
+    if moneyItems:size() < amount then
         self.amountEntry:setTooltip(getText("Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney"))
         return
     end
 
-    local remaining = amount
-    local deposited = 0
-
-    for _, entry in ipairs(moneyBundles) do
-        if remaining <= 0 then break end
-        local bundle, container = entry.item, entry.container
-        if bundle then
-            if remaining >= 100 then
-                container:Remove(bundle)
-                deposited = deposited + 100
-                remaining = remaining - 100
-            else
-                container:Remove(bundle)
-                deposited = deposited + remaining
-
-                local leftover = 100 - remaining
-                for j=1, leftover do
-                    container:AddItem("Base.Money")
-                end
-                remaining = 0
-            end
+    for i=1, amount do
+        local item = moneyItems:get(i-1)
+        if item then
+            inv:Remove(item)
         end
     end
 
-    for _, entry in ipairs(moneySingles) do
-        if remaining <= 0 then break end
-        local single, container = entry.item, entry.container
-        if single then
-            container:Remove(single)
-            deposited = deposited + 1
-            remaining = remaining - 1
-        end
-    end
-
-    if deposited > 0 then
-        EZPZBanking_BankServer.deposit(modData.accountID, deposited)
-        self:updateBalanceLabel()
-    end
+    EZPZBanking_BankServer.deposit(modData.accountID, amount)
+    self:updateBalanceLabel()
 end
 
 function EZPZBanking_ATMUI.ATMWindow:onWithdraw()
@@ -326,16 +241,8 @@ function EZPZBanking_ATMUI.ATMWindow:onWithdraw()
         return
     end
 
-    local remaining = amount
-
-    while remaining >= 100 do
-        player:getInventory():AddItem("Base.MoneyBundle")
-        remaining = remaining - 100
-    end
-
-    while remaining > 0 do
+    for i=1, amount do
         player:getInventory():AddItem("Base.Money")
-        remaining = remaining - 1
     end
 
     EZPZBanking_BankServer.withdraw(modData.accountID, amount)

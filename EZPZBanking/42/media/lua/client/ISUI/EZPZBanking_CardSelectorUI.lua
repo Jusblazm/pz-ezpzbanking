@@ -1,7 +1,9 @@
 -- EZPZBanking_CardSelectorUI
 EZPZBanking_CardSelectorUI = {}
 
-local EZPZBanking_ATMUI = require("EZPZBanking_ATMUI")
+local ISCollapsableWindow = ISCollapsableWindow
+
+local EZPZBanking_ATMUI = require("ISUI/EZPZBanking_ATMUI")
 local EZPZBanking_Utils = require("EZPZBanking_Utils")
 
 EZPZBanking_CardSelectorUI.Window = ISCollapsableWindow:derive("CardSelectorWindow")

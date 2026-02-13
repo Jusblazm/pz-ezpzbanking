@@ -1,5 +1,4 @@
 -- EZPZBanking_ProfessionPickpocketSpecial
-require "Items/Distribution_BagsAndContainers"
 local WALLET_CHANCE = 0.3
 local MULTI_WALLET_CHANCE = 0.05
 

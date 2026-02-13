@@ -32,7 +32,10 @@ Events.OnClientCommand.Add(function(module, command, player, args)
         if playerData.hasBankManagerReward then return end
 
         local inv = player:getInventory()
-        EZPZBanking_Utils.giveBankManagerReward(player)
+        local amount = ZombRand(20, 201)
+        local accountID = EZPZBanking_BankServer.getAccountID(player)
+        
+        EZPZBanking_BankServer.deposit(accountID, amount)
         playerData.hasBankManagerReward = true
     end
 end)

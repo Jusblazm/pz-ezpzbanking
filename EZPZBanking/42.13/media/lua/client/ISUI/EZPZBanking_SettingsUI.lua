@@ -51,6 +51,7 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
     self.pinEntry:instantiate()
     self.pinEntry:setOnlyNumbers(true)
     self.pinEntry:setMaxTextLength(2)
+    self.pinEntry:setTooltip(getText("Tooltip_EZPZBanking_ATMUI_PinEntry_Normal"))
     self:addChild(self.pinEntry)
 
     y = y + 30
@@ -71,7 +72,11 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
         end
 
         self.pinErrorLabel:setVisible(false)
-        EZPZBanking_BankServer.setPIN(modData, newPin)
+        sendClientCommand("EZPZBanking", "SetPIN", { 
+            pin = newPin, 
+            itemID = card:getID(),
+            containerType = "inventory"
+        })
     end)
     self.updatePinButton:initialise()
     if not self.card then
@@ -83,7 +88,7 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
 
     self.orderCardButton = ISButton:new(padding, y, btnW, btnH, getText("UI_EZPZBanking_SettingsUI_OrderCard"), self, function()
         if not player or player:isDead() then return end
-        EZPZBanking_Utils.CreateCreditCard(player)
+        sendClientCommand("EZPZBanking", "OrderCreditCard", {})
 
         print("[EZPZBanking] General: New credit card ordered")
 
@@ -102,7 +107,7 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
 
     y = y + btnH + 15
 
-    self.backButton = ISButton:new(padding, y, 80, 25, getText("UI_EZPZBanking_SettingsUI_Back"), self, self.onBack)
+    self.backButton = ISButton:new(padding, y, 80, 25, getText("UI_EZPZBanking_Generic_BackButton"), self, self.onBack)
     self.backButton:initialise()
     if not self.returnToATM or not self.card then
         self.backButton.enable = false
@@ -118,12 +123,12 @@ function EZPZBanking_SettingsUI.SettingsWindow:onBack()
     self:setVisible(false)
     self:removeFromUIManager()
     EZPZBanking_SettingsUI.instance = nil
-    local EZPZBanking_ATMUI = require("EZPZBanking_ATMUI")
+    local EZPZBanking_ATMUI = require("ISUI/EZPZBanking_ATMUI")
     EZPZBanking_ATMUI.openATMUI(player, card)
 end
 
 function EZPZBanking_SettingsUI.openSettingsUI(player, card, returnToATM)
-    if EZPZBanking_SettingsUI.instance then return end
+    if EZPZBanking_SettingsUI.instance and EZPZBanking_SettingsUI.instance:isVisible() then return end
     if not player or player:isDead() then return end
 
     local width = 300

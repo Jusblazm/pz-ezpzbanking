@@ -1,26 +1,41 @@
 UI_ES = {
     UI_trait_CreditCardThief = "Ladrón de tarjetas de crédito",
     UI_trait_CreditCardThief_Description = "Eres un ladrón de tarjetas de crédito experimentado. +5 de margen en tu intento al introducir un PIN de una tarjeta robada en un cajero automático.",
+    UI_profession_BankManager = "Gerente de banco",
+    UI_profession_BankManager_Description = "Empieza con una cantidad aleatoria de dinero.",
+    UI_profession_Pickpocket = "Carterista",
+    UI_profession_Pickpocket_Description = "Puede robar carteras de zombis al empujarlos.",
 
-    UI_EZPZBanking_ATMUI_SubmitButton = "Confirmar",
+    UI_EZPZBanking_Generic_SubmitButton = "Confirmar",
+    UI_EZPZBanking_Generic_BackButton = "Volver",
+    UI_EZPZBanking_Generic_ConfirmButton = "Confirmar",
+    UI_EZPZBanking_Generic_CancelButton = "Cancelar",
+    UI_EZPZBanking_Generic_CloseButton = "Cerrar",
+
     UI_EZPZBanking_ATMUI_NoCardFound = "No hay tarjeta de crédito disponible",
     UI_EZPZBanking_ATMUI_CardDestroyed = "¡Tarjeta destruida!",
     UI_EZPZBanking_ATMUI_Balance = "Saldo: $",
     UI_EZPZBanking_ATMUI_DepositButton = "Depositar",
     UI_EZPZBanking_ATMUI_WithdrawButton = "Retirar",
-    UI_EZPZBanking_ATMUI_ATMTitle = "Cajero automático del Banco Knox",
     UI_EZPZBanking_ATMUI_SettingsButton = "Ajustes",
+    UI_EZPZBanking_ATMUI_UninstallButton = "Quiero eliminar EZPZ Banking de forma segura",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Cajero automático del Banco Knox",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "No hay tarjetas de crédito disponibles",
     UI_EZPZBanking_CardSelectorUI_Attempts = "Intentos:",
-    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecciona una tarjeta de crédito",
     UI_EZPZBanking_CardSelectorUI_Loading = "Cargando...",
     UI_EZPZBanking_CardSelectorUI_Refresh = "Actualizar",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecciona una tarjeta de crédito",
 
-    UI_EZPZBanking_SettingsUI_Back = "Volver",
-    UI_EZPZBanking_SettingsUI_Close = "Cerrar",
     UI_EZPZBanking_SettingsUI_ReportStolen = "Reportar tarjeta robada",
     UI_EZPZBanking_SettingsUI_UpdatePIN = "Actualizar PIN",
     UI_EZPZBanking_SettingsUI_PINError = "El PIN debe tener 2 dígitos",
     UI_EZPZBanking_SettingsUI_OrderCard = "Solicitar una nueva tarjeta",
+
+    UI_EZPZBanking_ISEZPZBankingAdminUI_Amount = "Cantidad",
+    UI_EZPZBanking_ISEZPZBankingAdminUI_AdminPanelButton = "EZPZ Banking",
+    UI_EZPZBanking_ISEZPZBankingAdminUI_AdminTitle = "EZPZ Banking - Administrador",
+
+    UI_EZPZBanking_UninstallUI_FinalConfirmation = "Entiendo",
+    UI_EZPZBanking_UninstallUI_Title = "Eliminar EZPZ Banking",
 }

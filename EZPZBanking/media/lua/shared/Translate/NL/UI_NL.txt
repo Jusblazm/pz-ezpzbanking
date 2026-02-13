@@ -1,26 +1,41 @@
 UI_NL = {
     UI_trait_CreditCardThief = "Creditcarddief",
     UI_trait_CreditCardThief_Description = "Je bent een doorgewinterde creditcarddief. +5 marge bij het raden van een pincode voor een gestolen creditcard aan een geldautomaat.",
+    UI_profession_BankManager = "Bankmanager",
+    UI_profession_BankManager_Description = "Begint met een willekeurig geldbedrag.",
+    UI_profession_Pickpocket = "Zakkenroller",
+    UI_profession_Pickpocket_Description = "Kan portemonnees van zombies stelen door ze weg te duwen.",
 
-    UI_EZPZBanking_ATMUI_SubmitButton = "Bevestigen",
+    UI_EZPZBanking_Generic_SubmitButton = "Bevestigen",
+    UI_EZPZBanking_Generic_BackButton = "Terug",
+    UI_EZPZBanking_Generic_ConfirmButton = "Bevestigen",
+    UI_EZPZBanking_Generic_CancelButton = "Annuleren",
+    UI_EZPZBanking_Generic_CloseButton = "Sluiten",
+
     UI_EZPZBanking_ATMUI_NoCardFound = "Geen creditcard beschikbaar",
     UI_EZPZBanking_ATMUI_CardDestroyed = "Kaart vernietigd!",
     UI_EZPZBanking_ATMUI_Balance = "Saldo: $",
     UI_EZPZBanking_ATMUI_DepositButton = "Storten",
     UI_EZPZBanking_ATMUI_WithdrawButton = "Opnemen",
-    UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Geldautomaat",
     UI_EZPZBanking_ATMUI_SettingsButton = "Instellingen",
+    UI_EZPZBanking_ATMUI_UninstallButton = "Ik wil EZPZ Banking veilig verwijderen",
+    UI_EZPZBanking_ATMUI_ATMTitle = "Knox Bank Geldautomaat",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "Geen creditcards beschikbaar",
     UI_EZPZBanking_CardSelectorUI_Attempts = "Pogingen:",
-    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecteer een creditcard",
     UI_EZPZBanking_CardSelectorUI_Loading = "Laden...",
     UI_EZPZBanking_CardSelectorUI_Refresh = "Vernieuwen",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "Selecteer een creditcard",
 
-    UI_EZPZBanking_SettingsUI_Back = "Terug",
-    UI_EZPZBanking_SettingsUI_Close = "Sluiten",
     UI_EZPZBanking_SettingsUI_ReportStolen = "Kaart als gestolen melden",
     UI_EZPZBanking_SettingsUI_UpdatePIN = "Pincode bijwerken",
     UI_EZPZBanking_SettingsUI_PINError = "De pincode moet uit 2 cijfers bestaan",
     UI_EZPZBanking_SettingsUI_OrderCard = "Bestel een nieuwe kaart",
+
+    UI_EZPZBanking_ISEZPZBankingAdminUI_Amount = "Bedrag",
+    UI_EZPZBanking_ISEZPZBankingAdminUI_AdminPanelButton = "EZPZ Banking",
+    UI_EZPZBanking_ISEZPZBankingAdminUI_AdminTitle = "EZPZ Banking - Beheerder",
+
+    UI_EZPZBanking_UninstallUI_FinalConfirmation = "Ik begrijp het",
+    UI_EZPZBanking_UninstallUI_Title = "EZPZ Banking verwijderen",
 }

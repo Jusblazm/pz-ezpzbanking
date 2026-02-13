@@ -5,4 +5,6 @@ Tooltip_PT = {
     Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "Introduza o montante",
     Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "Fundos insuficientes para depósito",
     Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "Fundos insuficientes",
+    
+    Tooltip_EZPZBanking_AdminPanelUI_AdminPanelButton = "Aceda e gira os detalhes das contas bancárias dos jogadores aqui",
 }

@@ -1,4 +1,5 @@
 ItemName_PTBR = {
     ItemName_Base.BankPreApproved = "Oferta de Crédito Pré-Aprovada",
     ItemName_Base.BankApprovedCardInside = "Oferta de Crédito Aprovada (Cartão Incluso)",
+    ItemName_Base.CreditCardThiefMagazine = "Revista: Vale Quase Conta",
 }

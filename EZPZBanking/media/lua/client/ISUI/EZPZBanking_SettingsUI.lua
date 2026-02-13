@@ -102,7 +102,7 @@ function EZPZBanking_SettingsUI.SettingsWindow:createChildren()
 
     y = y + btnH + 15
 
-    self.backButton = ISButton:new(padding, y, 80, 25, getText("UI_EZPZBanking_SettingsUI_Back"), self, self.onBack)
+    self.backButton = ISButton:new(padding, y, 80, 25, getText("UI_EZPZBanking_Generic_BackButton"), self, self.onBack)
     self.backButton:initialise()
     if not self.returnToATM or not self.card then
         self.backButton.enable = false
@@ -118,7 +118,7 @@ function EZPZBanking_SettingsUI.SettingsWindow:onBack()
     self:setVisible(false)
     self:removeFromUIManager()
     EZPZBanking_SettingsUI.instance = nil
-    local EZPZBanking_ATMUI = require("EZPZBanking_ATMUI")
+    local EZPZBanking_ATMUI = require("ISUI/EZPZBanking_ATMUI")
     EZPZBanking_ATMUI.openATMUI(player, card)
 end
 

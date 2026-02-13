@@ -10,13 +10,13 @@ function ISAdminPanelUI:create()
     local x = padding + 1
     local y = getTextManager():getFontHeight(UIFont.Medium) + padding * 2 + 1
 
-    self.ezpzbankingAdminBtn = ISButton:new(x, y, btnWid, btnHgt, "EZPZ Banking", self, ISAdminPanelUI.onOptionMouseDown)
+    self.ezpzbankingAdminBtn = ISButton:new(x, y, btnWid, btnHgt, getText("UI_EZPZBanking_ISEZPZBankingAdminUI_AdminPanelButton"), self, ISAdminPanelUI.onOptionMouseDown)
 
     self.ezpzbankingAdminBtn.internal = "EZPZBANKING"
     self.ezpzbankingAdminBtn:initialise()
     self.ezpzbankingAdminBtn:instantiate()
     self.ezpzbankingAdminBtn.borderColor = self.buttonBorderColor
-    self.ezpzbankingAdminBtn.tooltip = getText("Tooltip_EZPZBanking_AdminPanelUI_AdminButton")
+    self.ezpzbankingAdminBtn.tooltip = getText("Tooltip_EZPZBanking_AdminPanelUI_AdminPanelButton")
 
     self:addChild(self.ezpzbankingAdminBtn)
 end

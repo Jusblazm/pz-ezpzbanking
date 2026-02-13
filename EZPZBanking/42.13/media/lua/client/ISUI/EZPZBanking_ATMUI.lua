@@ -3,7 +3,8 @@ EZPZBanking_ATMUI = {}
 
 local EZPZBanking_BankServer = require("EZPZBanking_BankServer")
 local EZPZBanking_Utils = require("EZPZBanking_Utils")
-local EZPZBanking_SettingsUI = require("EZPZBanking_SettingsUI")
+local EZPZBanking_SettingsUI = require("ISUI/EZPZBanking_SettingsUI")
+local EZPZBanking_UninstallUI = require("ISUI/EZPZBanking_UninstallUI")
 
 local ISCollapsableWindow = ISCollapsableWindow
 
@@ -36,8 +37,7 @@ function EZPZBanking_ATMUI.ATMWindow:createChildren()
     ISCollapsableWindow.createChildren(self)
 
     -- PIN entry box
-    local entryWidth = 100
-    self.pinEntry = ISTextEntryBox:new("", 10, 30, entryWidth, 25)
+    self.pinEntry = ISTextEntryBox:new("", 10, 30, 100, 25)
     self.pinEntry:initialise()
     self.pinEntry:instantiate()
     self.pinEntry:setOnlyNumbers(true)
@@ -46,17 +46,32 @@ function EZPZBanking_ATMUI.ATMWindow:createChildren()
     self:addChild(self.pinEntry)
 
     -- submit button
-    self.submitButton = ISButton:new(10 + entryWidth + 10, 30, 80, 25, getText("UI_EZPZBanking_ATMUI_SubmitButton"), self, function()
+    self.submitButton = ISButton:new(120, 30, 80, 25, getText("UI_EZPZBanking_Generic_SubmitButton"), self, function()
         self:onSubmitPIN()
     end)
     self.submitButton:initialise()
     self.submitButton:instantiate()
     self:addChild(self.submitButton)
 
-    -- placeholder
-    -- self.unlockedLabel = ISLabel:new(10, 70, 20, "Access Granted", 1, 1, 1, 1, UIFont.Medium, true)
-    -- self.unlockedLabel:setVisible(false)
-    -- self:addChild(self.unlockedLabel)
+    -- simple settings button
+    if EZPZBanking_Utils.canUseATMSettings() and EZPZBanking_Utils.isCardOwner(self:getPlayer(), self:getCard()) then
+        self.settingsButton = ISButton:new(10, 65, 80, 25, getText("UI_EZPZBanking_ATMUI_SettingsButton"), self, function()
+            self:onOpenSettings()
+        end)
+        self.settingsButton:initialise()
+        self.settingsButton:instantiate()
+        self:addChild(self.settingsButton)
+    end
+
+    if isClient() then return end
+
+    local y = self.height - 35
+    self.uninstallButton = ISButton:new(10, y, self.width - 20, 25, getText("UI_EZPZBanking_ATMUI_UninstallButton"), self, function()
+        self:onOpenUninstall()
+    end)
+    self.uninstallButton:initialise()
+    self.uninstallButton:instantiate()
+    self:addChild(self.uninstallButton)
 end
 
 function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
@@ -80,13 +95,12 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
     end
 
     local modData = card:getModData()
-    EZPZBanking_Utils.ensureCardHasData(card)
 
     local actualPinStr = modData.pin
     local actualPin = tonumber(actualPinStr)
     local descriptor = player:getDescriptor()
     local playerFullName = descriptor:getForename() .. " " .. descriptor:getSurname()
-    local isOwner = (modData.owner == playerFullName)
+    local isOwner = modData.owner == playerFullName
     local pinCorrect = false
 
     if isOwner then
@@ -105,7 +119,7 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
             pinRange = math.floor(hackingLevel * 2)
         end
 
-        if player:HasTrait("CreditCardThief") then
+        if player:hasTrait(EZPZBankingTraits.CreditCardThief) or player:hasTrait(EZPZBankingTraits.CreditCardThief2) then
             pinRange = pinRange + 5
         end
 
@@ -118,6 +132,12 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
         self.pin = true
         self.pinEntry:setVisible(false)
         self.submitButton:setVisible(false)
+        if self.uninstallButton then
+            self.uninstallButton:setVisible(false)
+        end
+        if self.settingsButton then
+            self.settingsButton:setVisible(false)
+        end
         if isOwner then
             modData.attempts = 0
         end
@@ -140,7 +160,8 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
         end
     end
     if isDebugEnabled() then
-        EZPZBanking_BankServer.printAllAccounts()
+        -- EZPZBanking_BankServer.printAllAccounts()
+        print("I should print all the accounts here")
     end
 end
 
@@ -154,6 +175,17 @@ function EZPZBanking_ATMUI.ATMWindow:onOpenSettings()
     EZPZBanking_ATMUI.instance = nil
 
     EZPZBanking_SettingsUI.openSettingsUI(player, card, true)
+end
+
+function EZPZBanking_ATMUI.ATMWindow:onOpenUninstall()
+    local player = self:getPlayer()
+    if not player or player:isDead() then return end
+
+    self:setVisible(false)
+    self:removeFromUIManager()
+    EZPZBanking_ATMUI.instance = nil
+
+    EZPZBanking_UninstallUI.openUninstallUI(player)
 end
 
 function EZPZBanking_ATMUI.ATMWindow:createBankUI()
@@ -192,19 +224,48 @@ function EZPZBanking_ATMUI.ATMWindow:createBankUI()
 end
 
 function EZPZBanking_ATMUI.ATMWindow:updateBalanceLabel()
-    local player = self:getPlayer()
     local card = self:getCard()
     local account = EZPZBanking_BankServer.getAccountByID(card:getModData().accountID)
-    local balance = account and tonumber(account.balance or 0) or 0
-    self.balanceLabel:setName(getText("UI_EZPZBanking_ATMUI_Balance") .. tostring(balance))
+    local balance = account and tonumber(account.balance) or 0
+    local formatBalance = string.format("%.2f", balance)
+    self.balanceLabel:setName(getText("UI_EZPZBanking_ATMUI_Balance") .. formatBalance)
+end
+
+function EZPZBanking_ATMUI.ATMWindow:delayBalanceUpdateUntil(expectedBalance, maxTicks)
+    local ticks = 0
+
+    local function onTick()
+        ticks = ticks + 1
+
+        local card = self:getCard()
+        if not card then
+            Events.OnTick.Remove(onTick)
+            return
+        end
+
+        local account = EZPZBanking_BankServer.getAccountByID(card:getModData().accountID)
+        if not account then return end
+
+        local serverBalance = tonumber(account.balance) or 0
+
+        if math.abs(serverBalance - expectedBalance) < 0.001 then
+            Events.OnTick.Remove(onTick)
+            self:updateBalanceLabel()
+            return
+        end
+
+        if ticks >= maxTicks then
+            Events.OnTick.Remove(onTick)
+            self:updateBalanceLabel()
+        end
+    end
+    Events.OnTick.Add(onTick)
 end
 
 function EZPZBanking_ATMUI.ATMWindow:onDeposit()
     local amount = tonumber(self.amountEntry:getText())
     if not amount or amount <= 0 then return end
 
-    local player = self:getPlayer()
-    local inv = player:getInventory()
     local card = self:getCard()
     if not card then return end
 
@@ -212,28 +273,19 @@ function EZPZBanking_ATMUI.ATMWindow:onDeposit()
     local account = EZPZBanking_BankServer.getAccountByID(modData.accountID)
     if not account then return end
 
-    local moneyItems = inv:getAllType("Money")
-    if moneyItems:size() < amount then
-        self.amountEntry:setTooltip(getText("Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney"))
-        return
-    end
+    local expectedBalance = account.balance + amount
 
-    for i=1, amount do
-        local item = moneyItems:get(i-1)
-        if item then
-            inv:Remove(item)
-        end
-    end
-
-    EZPZBanking_BankServer.deposit(modData.accountID, amount)
-    self:updateBalanceLabel()
+    sendClientCommand("EZPZBanking", "DepositMoney", {
+        accountID = modData.accountID,
+        amount = amount
+    })
+    self:delayBalanceUpdateUntil(expectedBalance, 120)
 end
 
 function EZPZBanking_ATMUI.ATMWindow:onWithdraw()
     local amount = tonumber(self.amountEntry:getText())
     if not amount or amount <= 0 then return end
 
-    local player = self:getPlayer()
     local card = self:getCard()
     if not card then return end
 
@@ -246,18 +298,17 @@ function EZPZBanking_ATMUI.ATMWindow:onWithdraw()
         return
     end
 
-    for i=1, amount do
-        player:getInventory():AddItem("Base.Money")
-    end
+    local expectedBalance = account.balance - amount
 
-    EZPZBanking_BankServer.withdraw(modData.accountID, amount)
-    self:updateBalanceLabel()
+    sendClientCommand("EZPZBanking", "WithdrawMoney", {
+        accountID = modData.accountID,
+        amount = amount
+    })
+    self:delayBalanceUpdateUntil(expectedBalance, 120)
 end
 
 function EZPZBanking_ATMUI.openATMUI(player, card)
-    if EZPZBanking_ATMUI.instance and EZPZBanking_ATMUI.instance:isVisible() then
-        return
-    end
+    if EZPZBanking_ATMUI.instance and EZPZBanking_ATMUI.instance:isVisible() then return end
 
     card = card or EZPZBanking_Utils.getCard(player)
     if not card then
@@ -269,6 +320,9 @@ function EZPZBanking_ATMUI.openATMUI(player, card)
         panel:addChild(noCardLabel)
         return
     end
+
+    local modData = card:getModData()
+    sendClientCommand("EZPZBanking", "RequestAccountData", { accountID = modData.accountID })
 
     local width = 300
     local height = 200
@@ -286,9 +340,10 @@ function EZPZBanking_ATMUI.openATMUI(player, card)
 
     EZPZBanking_ATMUI.instance = panel
 
-    local modData = card:getModData()
-    EZPZBanking_Utils.ensureCardHasData(card)
-    local account = EZPZBanking_BankServer.getOrCreateAccountByID(modData)
+    sendClientCommand(player, "EZPZBanking", "GetOrCreateAccount", {
+        itemID = card:getID(),
+        containerType = "inventory"
+    })
 
     if isDebugEnabled() then
         print("[EZPZBanking] Debug: Credit Card Owner: " .. tostring(modData.owner))
@@ -299,6 +354,7 @@ function EZPZBanking_ATMUI.openATMUI(player, card)
         local descriptor = player:getDescriptor()
         print("[EZPZBanking] Debug: I own this Credit Card: " .. tostring(modData.owner == descriptor:getForename() .. " " .. descriptor:getSurname()))
         print("[EZPZBanking] Debug: This Credit Card is stolen: " .. tostring(modData.isStolen))
+        print("[EZPZBanking] Debug: This Credit Card has a balance of: " .. tostring(EZPZBanking_BankServer.getBalance(card)))
     end
 end
 
