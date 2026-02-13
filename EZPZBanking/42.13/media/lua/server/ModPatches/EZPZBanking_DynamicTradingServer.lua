@@ -60,7 +60,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
             end
 
             -- 2. Calculate Price
-            -- local unitPrice = DynamicTrading.Economy.GetBuyPrice(key, data.globalHeat)
             local unitPrice = DynamicTrading.Economy.V1.GetBuyPrice(key, data.globalHeat, customData)
             local totalCost = unitPrice * clientQty
             
@@ -79,11 +78,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
             -- 4. Execute Trade
             local accountID = EZPZBanking_BankServer.getAccountID(player)
             if EZPZBanking_BankServer.withdraw(accountID, totalCost) then
-            -- if EZPZBanking_BankServer.getBalanceByID(accountID) > totalCost then
-                -- sendClientCommand("EZPZBanking", "DoWithdrawWithoutMoney", { 
-                --     accountID = accountID,
-                --     amount = totalCost
-                -- })
                 DynamicTrading.Manager.OnBuyItem(traderID, key, category, clientQty)
                 ServerAddItem(inv, itemData.item, clientQty)
                 
@@ -152,7 +146,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
 
             -- [NEW] Check Trader Budget
             local localCount = (trader.localDeflation and trader.localDeflation[key]) or 0
-            -- local unitPrice = DynamicTrading.Economy.GetSellPrice(itemObj, key, trader.archetype, data.globalHeat, localCount)
             local unitPrice = DynamicTrading.Economy.V1.GetSellPrice(itemObj, key, trader.archetype, data.globalHeat, localCount)
             local totalGain = unitPrice * clientQty
 
@@ -175,10 +168,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
             ServerRemoveItem(itemObj)
             local accountID = EZPZBanking_BankServer.getAccountID(player)
             EZPZBanking_BankServer.deposit(accountID, totalGain)
-            -- sendClientCommand("EZPZBanking", "DoDepositWithoutMoney", { 
-            --     accountID = accountID,
-            --     amount = totalGain
-            -- })
             
             DynamicTrading.Manager.OnSellItem(traderID, key, category, clientQty)
             
@@ -216,7 +205,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
 
         -- 3. Deduct Money
         if not EZPZBanking_BankServer.withdraw(accountID, price) then
-        -- if EZPZBanking_BankServer.getBalanceByID(accountID) < price then
             SendResponse(player, "RequestResult", { success=false, msg="Transaction Error" })
             return
         end
@@ -232,10 +220,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
             SendResponse(player, "RequestResult", { success=true, name=trader.name })
         else
             EZPZBanking_BankServer.deposit(accountID, price)
-            -- sendClientCommand("EZPZBanking", "DoDepositWithoutMoney", { 
-            --     accountID = accountID,
-            --     amount = price
-            -- })
             SendResponse(player, "RequestResult", { success=false, msg="Contact unavailable" })
         end
     end
@@ -245,10 +229,6 @@ local function patchDynamicTradingWithEZPZBankingAccounts()
         local accountID = EZPZBanking_BankServer.getAccountID(player)
         if amount and amount > 0 then
             EZPZBanking_BankServer.withdraw(accountID, amount)
-            -- sendClientCommand("EZPZBanking", "DoWithdrawWithoutMoney", { 
-            --     accountID = accountID,
-            --     amount = amount
-            -- })
             DynamicTrading.NetworkLogs.AddLog("Scam: " .. player:getUsername() .. " lost $" .. amount, "bad")
         end
     end

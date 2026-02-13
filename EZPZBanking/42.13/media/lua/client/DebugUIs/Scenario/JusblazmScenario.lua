@@ -102,6 +102,9 @@ debugScenarios.JusblazmScenario = {
         local EZPZBanking_BankServer = require("EZPZBanking_BankServer");
         EZPZBanking_BankServer.getOrCreateAccount(player);
 
+        local accountID = EZPZBanking_BankServer.getAccountID(player);
+        EZPZBanking_BankServer.deposit(accountID, 1000);
+
         -- local dye = player:getInventory():AddItem("Base.IndustrialDye")
 
         player:getInventory():AddItems("Base.Money", 200);
@@ -111,6 +114,7 @@ debugScenarios.JusblazmScenario = {
         player:getInventory():AddItem("Base.CreditCard");
         -- player:getInventory():AddItem("Base.BiteMeCostumesAndMoreCatalog1");
         player:getInventory():AddItem("Base.Bag_NormalHikingBag");
+        player:getInventory():AddItem("Base.HamRadio2");
         -- player:getInventory():AddItem("RiskyInvestment.PDA");
         player:setUnlimitedCarry(true);
         player:setPerkLevelDebug(Perks.Hacking, 10);

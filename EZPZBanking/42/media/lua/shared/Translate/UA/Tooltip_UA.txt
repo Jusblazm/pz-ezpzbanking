@@ -5,4 +5,6 @@ Tooltip_UA = {
     Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal = "Введіть суму",
     Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney = "Недостатньо грошей для внесення",
     Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient = "Недостатньо коштів",
+    
+    Tooltip_EZPZBanking_AdminPanelUI_AdminPanelButton = "Тут можна отримати доступ і керувати банківськими рахунками гравців",
 }

@@ -18,3 +18,19 @@ function EZPZBanking_API.registerATM(spriteName, facingDir)
     EZPZBanking_Utils.validATMSprites[spriteName] = true
     EZPZBanking_Utils.ATMFacingDirections[spriteName] = facingDir
 end
+
+function EZPZBanking_API.deposit(player, amount)
+    print("[EZPZBanking] Error: This API function does not exist for build 42.12, please upgrade to the newest version")
+end
+
+function EZPZBanking_API.withdraw(player, amount)
+    print("[EZPZBanking] Error: This API function does not exist for build 42.12, please upgrade to the newest version")
+end
+
+function EZPZBanking_API.getPIN(player, amount)
+    print("[EZPZBanking] Error: This API function does not exist for build 42.12, please upgrade to the newest version")
+end
+
+function EZPZBanking_API.giveMoney(player, amount)
+    print("[EZPZBanking] Error: This API function does not exist for build 42.12, please upgrade to the newest version")
+end

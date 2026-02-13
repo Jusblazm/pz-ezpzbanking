@@ -1,9 +1,7 @@
 -- EZPZBanking_CardSelectorUI
 EZPZBanking_CardSelectorUI = {}
 
-local ISCollapsableWindow = ISCollapsableWindow
-
-local EZPZBanking_ATMUI = require("EZPZBanking_ATMUI")
+local EZPZBanking_ATMUI = require("ISUI/EZPZBanking_ATMUI")
 local EZPZBanking_Utils = require("EZPZBanking_Utils")
 
 EZPZBanking_CardSelectorUI.Window = ISCollapsableWindow:derive("CardSelectorWindow")
@@ -25,60 +23,26 @@ function EZPZBanking_CardSelectorUI.Window:createChildren()
     local inv = self.player:getInventory():getItems()
     local cardY = 30
     local spacing = 35
-    local allCardsHaveData = true
 
     for i=0, inv:size()-1 do
         local item = inv:get(i)
         if item:getType() == "CreditCard" then
-            sendClientCommand(self.player, "EZPZBanking", "GetOrCreateAccount", {
-                itemID = item:getID(),
-                containerType = "inventory"
-            })
-            if not EZPZBanking_Utils.hasEZPZBankingModData(item) then
-                allCardsHaveData = false
-            end
+            EZPZBanking_Utils.ensureCardHasData(item)
+            local modData = item:getModData()
+            attemptsLabel = getText("UI_EZPZBanking_CardSelectorUI_Attempts")
+            local label = string.format("%s - **** %s | %s %d/3", modData.owner, modData.last4, attemptsLabel, modData.attempts)
+
+            local button = ISButton:new(10, cardY, self.width - 20, 25, label, self, function()
+                self:onCardSelected(item)
+            end)
+            button:initialise()
+            button:instantiate()
+            self:addChild(button)
+
+            cardY = cardY + spacing
         end
+        self.minimumHeight = math.min(math.max(cardY + 10, 100), 500)
     end
-
-    if allCardsHaveData then
-        for i=0, inv:size()-1 do
-            local item = inv:get(i)
-            if item:getType() == "CreditCard" then
-                local modData = item:getModData()
-                local attemptsLabel = getText("UI_EZPZBanking_CardSelectorUI_Attempts")
-                local label = string.format("%s - **** %s | %s %d/3", modData.owner, modData.last4, attemptsLabel, modData.attempts)
-
-                local button = ISButton:new(10, cardY, self.width - 20, 25, label, self, function()
-                    self:onCardSelected(item)
-                end)
-                button:initialise()
-                button:instantiate()
-                self:addChild(button)
-
-                cardY = cardY + spacing
-            end
-        end
-    else
-        local loadingLabel = ISLabel:new(10, cardY, 20, getText("UI_EZPZBanking_CardSelectorUI_Loading"), 1, 1, 1, 1, UIFont.Medium, true)
-        self:addChild(loadingLabel)
-        cardY = cardY + spacing
-
-        local refreshButton = ISButton:new(10, cardY, self.width - 20, 25, getText("UI_EZPZBanking_CardSelectorUI_Refresh"), self, function()
-            self:createChildren()
-        end)
-        refreshButton:initialise()
-        refreshButton.enable = false
-        self:addChild(refreshButton)
-        cardY = cardY + spacing
-
-        local function sendNextTick()
-            refreshButton.enable = true
-            Events.OnTick.Remove(sendNextTick)
-        end
-        Events.OnTick.Add(sendNextTick)
-    end
-
-    self.minimumHeight = math.min(math.max(cardY + 10, 100), 500)
 
     if cardY == 30 then
         local noCardsLabel = ISLabel:new(10, 30, 20, getText("UI_EZPZBanking_CardSelectorUI_NoCardsFound"), 1, 1, 1, 1, UIFont.Medium, true)
@@ -114,8 +78,6 @@ function EZPZBanking_CardSelectorUI.Window:onCardSelected(card)
 end
 
 function EZPZBanking_CardSelectorUI.openSelectorUI(player)
-    if EZPZBanking_CardSelectorUI.instance and EZPZBanking_CardSelectorUI.instance:isVisible() then return end
-    
     local width = 300
     local height = 500
     local x = getCore():getScreenWidth() / 2 - width / 2

@@ -93,14 +93,27 @@ function EZPZBanking_API.withdraw(player, amount)
     })
 end
 
+--- gets the player's PIN
+-- @param player (IsoPlayer) the player object
+function EZPZBanking_API.getPIN(player)
+    local account = EZPZBanking_BankServer.getAccountByPlayer(player)
+    return account.pin
+end
+
 --- gives money directly to a player's bank account
 -- @param player (IsoPlayer) the player object
 -- @param amount (number) amount of money to deposit
 function EZPZBanking_API.giveMoney(player, amount)
-    if not player or type(amount) ~= "number" or amount <= 0 then return end
+    if not player then
+        print("[EZPZBanking] Error: Invalid player passed to giveMoney")
+        return
+    end
+    if type(amount) ~= "number" or amount <= 0 then
+        print("[EZPZBanking] Error: Invalid amount passed to giveMoney")
+        return
+    end
 
     local account = EZPZBanking_BankServer.getAccountByPlayer(player)
-    print("account:", account)
     if not account then return end
 
     sendClientCommand("EZPZBanking", "GiveAccountPayment", {

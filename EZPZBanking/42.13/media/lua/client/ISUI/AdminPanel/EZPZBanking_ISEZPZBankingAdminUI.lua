@@ -39,7 +39,7 @@ function EZPZBanking_ISEZPZBankingAdminUI.Window:createChildren()
 
     y = y + 40
 
-    self.confirmButton = ISButton:new(x, y, 80, 25, getText("UI_EZPZBanking_ISEZPZBankingAdminUI_ConfirmButton"), self, function()
+    self.confirmButton = ISButton:new(x, y, 80, 25, getText("UI_EZPZBanking_Generic_ConfirmButton"), self, function()
         self:onConfirm()
     end)
     self.confirmButton:initialise()

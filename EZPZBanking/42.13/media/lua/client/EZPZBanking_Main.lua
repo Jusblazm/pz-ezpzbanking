@@ -1,8 +1,9 @@
 -- EZPZBanking_Main
-require "EZPZBanking_ATMUI"
-require "EZPZBanking_CardSelectorUI"
-require "EZPZBanking_SettingsUI"
-require "EZPZBanking_ISEZPZBankingAdminUI"
+require "ISUI/EZPZBanking_ATMUI"
+require "ISUI/EZPZBanking_CardSelectorUI"
+require "ISUI/EZPZBanking_SettingsUI"
+require "ISUI/EZPZBanking_UninstallUI"
+require "ISUI/AdminPanel/EZPZBanking_ISEZPZBankingAdminUI"
 
 -- unified ESC key handler
 local function onGlobalKeyPressed(key)
@@ -28,6 +29,13 @@ local function onGlobalKeyPressed(key)
             EZPZBanking_SettingsUI.instance = nil
         end
 
+        -- close UninstallUI
+        if EZPZBanking_UninstallUI.instance and EZPZBanking_UninstallUI.instance:isVisible() then
+            EZPZBanking_UninstallUI.instance:setVisible(false)
+            EZPZBanking_UninstallUI.instance:removeFromUIManager()
+            EZPZBanking_UninstallUI.instance = nil
+        end
+
         -- close ISEZPZBankingAdminUI
         if EZPZBanking_ISEZPZBankingAdminUI.instance and EZPZBanking_ISEZPZBankingAdminUI.instance:isVisible() then
             EZPZBanking_ISEZPZBankingAdminUI.instance:setVisible(false)
@@ -38,28 +46,6 @@ local function onGlobalKeyPressed(key)
 end
 
 Events.OnKeyPressed.Add(onGlobalKeyPressed)
-
-Events.OnServerCommand.Add(function(module, command, args)
-    if module ~= "EZPZBanking" then return end
-
-    if command == "AccountUpdated" then
-        require "EZPZBanking_BankServer"
-        local account = EZPZBanking_BankServer.getAccountByID(args.accountID)
-        if account then
-            account.balance = args.balance
-        end
-    end
-
-    if command == "AccountDetails" then
-        require "EZPZBanking_BankServer"
-        local account = EZPZBanking_BankServer.getAccountByID(args.accountID)
-        if account then
-            account.balance = args.balance
-            account.owner = args.owner
-            account.pin = args.pin
-        end
-    end
-end)
 
 local function onInitGlobalModData()
     ModData.request("BankAccounts")

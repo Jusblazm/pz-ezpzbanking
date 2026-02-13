@@ -1,26 +1,41 @@
 UI_JP = {
     UI_trait_CreditCardThief = "クレジットカード泥棒",
     UI_trait_CreditCardThief_Description = "あなたは経験豊富なクレジットカード泥棒です。ATMで盗んだクレジットカードのPINを入力するとき、推測に+5の幅が加わります。",
+    UI_profession_BankManager = "銀行支店長",
+    UI_profession_BankManager_Description = "ランダムな金額のお金を所持して開始します。",
+    UI_profession_Pickpocket = "スリ",
+    UI_profession_Pickpocket_Description = "ゾンビを押しのけたときに財布を盗めます。",
 
-    UI_EZPZBanking_ATMUI_SubmitButton = "送信",
+    UI_EZPZBanking_Generic_SubmitButton = "送信",
+    UI_EZPZBanking_Generic_BackButton = "戻る",
+    UI_EZPZBanking_Generic_ConfirmButton = "確認",
+    UI_EZPZBanking_Generic_CancelButton = "キャンセル",
+    UI_EZPZBanking_Generic_CloseButton = "閉じる",
+
     UI_EZPZBanking_ATMUI_NoCardFound = "クレジットカードがありません",
     UI_EZPZBanking_ATMUI_CardDestroyed = "カードが破壊されました！",
     UI_EZPZBanking_ATMUI_Balance = "残高: $",
     UI_EZPZBanking_ATMUI_DepositButton = "預け入れ",
     UI_EZPZBanking_ATMUI_WithdrawButton = "引き出し",
-    UI_EZPZBanking_ATMUI_ATMTitle = "ノックス銀行ATM",
     UI_EZPZBanking_ATMUI_SettingsButton = "設定",
+    UI_EZPZBanking_ATMUI_UninstallButton = "EZPZ Bankingを安全に削除する",
+    UI_EZPZBanking_ATMUI_ATMTitle = "ノックス銀行ATM",
 
     UI_EZPZBanking_CardSelectorUI_NoCardsFound = "利用可能なクレジットカードがありません",
     UI_EZPZBanking_CardSelectorUI_Attempts = "試行回数:",
-    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "クレジットカードを選択",
     UI_EZPZBanking_CardSelectorUI_Loading = "読み込み中...",
     UI_EZPZBanking_CardSelectorUI_Refresh = "更新",
+    UI_EZPZBanking_CardSelectorUI_CardSelectorTitle = "クレジットカードを選択",
 
-    UI_EZPZBanking_SettingsUI_Back = "戻る",
-    UI_EZPZBanking_SettingsUI_Close = "閉じる",
     UI_EZPZBanking_SettingsUI_ReportStolen = "カード盗難を報告",
     UI_EZPZBanking_SettingsUI_UpdatePIN = "PINを更新",
     UI_EZPZBanking_SettingsUI_PINError = "PINは2桁でなければなりません",
     UI_EZPZBanking_SettingsUI_OrderCard = "新しいカードを注文",
+
+    UI_EZPZBanking_ISEZPZBankingAdminUI_Amount = "金額",
+    UI_EZPZBanking_ISEZPZBankingAdminUI_AdminPanelButton = "EZPZ Banking",
+    UI_EZPZBanking_ISEZPZBankingAdminUI_AdminTitle = "EZPZ Banking - 管理者",
+
+    UI_EZPZBanking_UninstallUI_FinalConfirmation = "理解しました",
+    UI_EZPZBanking_UninstallUI_Title = "EZPZ Bankingを削除",
 }

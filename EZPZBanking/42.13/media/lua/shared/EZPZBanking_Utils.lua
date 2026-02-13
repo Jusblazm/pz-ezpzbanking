@@ -233,28 +233,6 @@ function EZPZBanking_Utils.createCreditCard(player)
     syncItemModData(player, item)
 end
 
-function EZPZBanking_Utils.giveBankManagerReward(player)
-    if isClient() then return end
-    if not player or player:isDead() then return nil end
-
-    local inv = player:getInventory()
-    local amount = ZombRand(20, 201)
-
-    local bundleCount = math.floor(amount / 100)
-    local singleCount = amount % 100
-
-    for i=1, bundleCount do
-        local bundle = instanceItem("Base.MoneyBundle")
-        inv:AddItem(bundle)
-        sendAddItemToContainer(inv, bundle)
-    end
-    for i=1, singleCount do
-        local single = instanceItem("Base.Money")
-        inv:AddItem(single)
-        sendAddItemToContainer(inv, single)
-    end
-end
-
 function EZPZBanking_Utils.isAutomaticOwnerPINEnabled()
     return SandboxVars.EZPZBanking and SandboxVars.EZPZBanking.OwnerPIN == true
 end
@@ -270,6 +248,83 @@ function EZPZBanking_Utils.canUseATMSettings()
     end
 
     return not getActivatedMods():contains(MailOrderCatalogs)
+end
+
+function EZPZBanking_Utils.hasEZPZBankingProfession(player)
+    local professions = EZPZBankingProfessions
+    for _, profession in pairs(professions) do
+        if player:getDescriptor():isCharacterProfession(profession) then
+            return true
+        end
+    end
+    return false
+end
+
+function EZPZBanking_Utils.removeEZPZBankingProfessions(player)
+    if not EZPZBanking_Utils.hasEZPZBankingProfession(player) then return end
+    local professions = EZPZBankingProfessions
+    local playerData = player:getModData()
+
+    playerData.previouslyHadEZPZBankingProfession = player:getDescriptor():getCharacterProfession():toString()
+    
+    player:getDescriptor():setCharacterProfession(CharacterProfession.UNEMPLOYED)
+end
+
+function EZPZBanking_Utils.addEZPZBankingProfessions(player)
+    local playerData = player:getModData()
+    if not playerData.previouslyHadEZPZBankingProfession then return end
+
+    if player:getDescriptor():isCharacterProfession(CharacterProfession.UNEMPLOYED) then
+        local professionList = CharacterProfessionDefinition.getProfessions();
+        for i=0, professionList:size()-1 do
+            local profession = professionList:get(i)
+            if profession:getType():toString() == playerData.previouslyHadEZPZBankingProfession then
+                player:getDescriptor():setCharacterProfession(profession:getType())
+            end
+        end
+    end
+    playerData.previouslyHadEZPZBankingProfession = nil
+end
+
+function EZPZBanking_Utils.hasEZPZBankingTrait(player)
+    local traits = EZPZBankingTraits
+    for _, trait in pairs(traits) do
+        if player:hasTrait(trait) then
+            return true
+        end
+    end
+    return false
+end
+
+function EZPZBanking_Utils.removeEZPZBankingTraits(player)
+    if not EZPZBanking_Utils.hasEZPZBankingTrait(player) then return end
+    local traits = EZPZBankingTraits
+    local playerData = player:getModData()
+
+    playerData.previouslyHadEZPZBankingTraits = {}
+    for _, trait in pairs(traits) do
+        if player:hasTrait(trait) then
+            table.insert(playerData.previouslyHadEZPZBankingTraits, trait:toString())
+            player:getCharacterTraits():remove(trait)
+        end
+    end
+end
+
+function EZPZBanking_Utils.addEZPZBankingTraits(player)
+    local playerData = player:getModData()
+    if not playerData.previouslyHadEZPZBankingTraits then return end
+
+    local traitList = CharacterTraitDefinition.getTraits();
+
+    for _, traitName in ipairs(playerData.previouslyHadEZPZBankingTraits) do
+        for i=0, traitList:size()-1 do
+            local trait = traitList:get(i)
+            if trait:getType():toString() == traitName then
+                player:getCharacterTraits():add(trait:getType())
+            end
+        end
+    end
+    playerData.previouslyHadEZPZBankingTraits = nil
 end
 
 return EZPZBanking_Utils
