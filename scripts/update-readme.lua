@@ -74,22 +74,29 @@ local function read_file_utf16(path)
     return table.concat(utf8)
 end
 
+local function read_file_auto(path)
+    local f = assert(io.open(path, "rb"))
+    local data = f:read("*all")
+    f:close()
+
+    local bom = data:sub(1,2)
+    
+    if bom == "\255\254" or bom == "\254\255" then
+        return read_file_utf16(path) -- utf-16
+    else
+        return data -- utf-8
+    end
+end
+
 local function extract_keys_from_file(filepath, lang_code)
     local keys = {}
     local inside_table = false
 
     -- create a line iterator depending on encoding
     local iter, closer
-    if lang_code == "KO" then
-        local text = read_file_utf16(filepath)
-        iter = text:gmatch("[^\r\n]+") -- returns function
-        closer = function() end        -- no-op
-    else
-        local f = io.open(filepath, "r")
-        if not f then return keys end
-        iter = f:lines()
-        closer = function() f:close() end
-    end
+    local text = read_file_auto(filepath)
+    iter = text:gmatch("[^\r\n]+")
+    closer = function() end
 
     for line in iter do
         if line:find("= %s*{") then
