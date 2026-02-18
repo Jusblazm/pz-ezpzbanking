@@ -216,8 +216,8 @@ function EZPZBanking_Utils.createCreditCard(player)
     local desc = player:getDescriptor()
     if desc then
         owner = desc:getForename() .. " " .. desc:getSurname()
-        -- item:setName("Credit Card: " .. owner)
-        item:setName("Credit Card (\"" .. owner .. "\")")
+        item:setName("Credit Card: " .. owner)
+        -- item:setName("Credit Card (\"" .. owner .. "\")")
     end
     local modData = item:getModData()
     modData.owner = owner
