@@ -12,7 +12,6 @@ function EZPZBanking_OpenBankLetterAction:perform()
 end
 
 function EZPZBanking_OpenBankLetterAction:complete()
-
     local inv = self.character:getInventory()
 
     local creditCard = instanceItem("Base.CreditCard")
