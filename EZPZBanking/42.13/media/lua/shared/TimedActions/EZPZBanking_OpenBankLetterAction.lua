@@ -7,6 +7,15 @@ function EZPZBanking_OpenBankLetterAction:isValid()
     return self.item and self.character:getInventory():contains(self.item)
 end
 
+function EZPZBanking_OpenBankLetterAction:start()
+    self:setActionAnim("Loot")
+    self.character:SetVariable("LootPosition", "Mid")
+end
+
+function EZPZBanking_OpenBankLetterAction:stop()
+    ISBaseTimedAction.stop(self)
+end
+
 function EZPZBanking_OpenBankLetterAction:perform()
     ISBaseTimedAction.perform(self)
 end
