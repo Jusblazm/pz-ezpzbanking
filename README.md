@@ -75,7 +75,7 @@ EZPZBanking_API.giveMoney(player, amount)
 <!-- AUTO-GENERATED-TABLE:END -->
 
 ### Translation Notice
-Translations are done via ChatGPT and checked with Google Translate. I do my best, but I'm sure there are some errors. If you would like to contribute please get in touch.
+Translations are provided by AI for your benefit. There are bound to be some errors. If you would like to contribiute, please reach out to me; I will happily replace AI-generated translations.
 
 ## Support
 Come find me on discord! Be sure to grab the Project Zomboid Modding Role once you arrive.\

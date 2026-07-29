@@ -3,7 +3,7 @@ name: Update Translation Table
 on:
   push:
     paths:
-      - 'EZPZBanking/42.13/media/lua/shared/Translate/**'
+      - 'EZPZBanking/42.20/media/lua/shared/Translate/**'
       - 'scripts/update-readme.lua'
   workflow_dispatch:
 

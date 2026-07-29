@@ -1,6 +1,6 @@
 local lfs = require("lfs")
 
-local BASE_DIR = "EZPZBanking/42.13/media/lua/shared/Translate"
+local BASE_DIR = "EZPZBanking/42.20/media/lua/shared/Translate"
 local README_PATH = "README.md"
 local LANGUAGES = {
     EN = "🇺🇸 English",
@@ -32,88 +32,20 @@ local LANGUAGES = {
     UA = "🇺🇦 Ukrainian"
 }
 
--- minimal utf8.char replacement
-local function codepoint_to_utf8(code)
-    if code < 0x80 then
-        return string.char(code)
-    elseif code < 0x800 then
-        return string.char(
-            0xC0 + math.floor(code / 0x40),
-            0x80 + (code % 0x40)
-        )
-    elseif code < 0x10000 then
-        return string.char(
-            0xE0 + math.floor(code / 0x1000),
-            0x80 + (math.floor(code / 0x40) % 0x40),
-            0x80 + (code % 0x40)
-        )
-    else
-        -- outside BMP, rarely needed
-        return "?"
-    end
-end
-
-local function read_file_utf16(path)
+local function read_file(path)
     local f = assert(io.open(path, "rb"))
     local data = f:read("*all")
     f:close()
-
-    -- detect BOM
-    local bom = data:sub(1,2)
-    local little_endian = (bom == "\255\254") -- FF FE
-    local i = 3
-    local utf8 = {}
-
-    while i < #data do
-        local b1, b2 = data:byte(i, i+1)
-        if not b1 or not b2 then break end
-        local codepoint = little_endian and (b2*256 + b1) or (b1*256 + b2)
-        table.insert(utf8, codepoint_to_utf8(codepoint))
-        i = i + 2
-    end
-    return table.concat(utf8)
+    return data
 end
 
-local function read_file_auto(path)
-    local f = assert(io.open(path, "rb"))
-    local data = f:read("*all")
-    f:close()
-
-    local bom = data:sub(1,2)
-    
-    if bom == "\255\254" or bom == "\254\255" then
-        return read_file_utf16(path) -- utf-16
-    else
-        return data -- utf-8
-    end
-end
-
-local function extract_keys_from_file(filepath, lang_code)
+local function extract_keys_from_file(filepath)
     local keys = {}
-    local inside_table = false
 
-    -- create a line iterator depending on encoding
-    local iter, closer
-    local text = read_file_auto(filepath)
-    iter = text:gmatch("[^\r\n]+")
-    closer = function() end
-
-    for line in iter do
-        if line:find("= %s*{") then
-            inside_table = true
-        elseif inside_table then
-            if line:find("^%s*}") then
-                inside_table = false
-            else
-                -- matches: plain keys, quoted keys, or bracketed keys
-                local match = line:match("^%s*[%[%\"']?([%w_%.]+)[%]\"']?%s*=")
-                if match then
-                    keys[match] = true
-                end
-            end
-        end
+    local text = read_file(filepath)
+    for key in text:gmatch('"([^"]+)"%s*:') do
+        keys[key] = true
     end
-    closer()
     return keys
 end
 
@@ -123,8 +55,8 @@ local function get_reference_keys()
     local keys = {}
 
     for file in lfs.dir(path) do
-        if file:match("%.txt$") then
-            local file_keys = extract_keys_from_file(path .. "/" .. file, "EN")
+        if file:match("%.json$") then
+            local file_keys = extract_keys_from_file(path .. "/" .. file)
             for k, _ in pairs(file_keys) do
                 keys[k] = true
             end
@@ -144,8 +76,8 @@ local function get_language_keys(lang_code)
     end
 
     for file in lfs.dir(path) do
-        if file:match("%.txt$") then
-            local file_keys = extract_keys_from_file(path .. "/" .. file, lang_code)
+        if file:match("%.json$") then
+            local file_keys = extract_keys_from_file(path .. "/" .. file)
             for k, _ in pairs(file_keys) do
                 keys[k] = true
             end
