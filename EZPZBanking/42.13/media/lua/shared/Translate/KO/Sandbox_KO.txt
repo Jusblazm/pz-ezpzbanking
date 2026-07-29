@@ -1,5 +1,0 @@
-Sandbox_KO = {
-    Sandbox_EZPZBanking = "EZPZ 은행 설정",
-    Sandbox_EZPZBanking_OwnerPIN = "카드 PIN 자동 입력",
-    Sandbox_EZPZBanking_OwnerPIN_tooltip = "내 카드일 경우 ATM에서 PIN을 자동으로 입력할까요?",
-}

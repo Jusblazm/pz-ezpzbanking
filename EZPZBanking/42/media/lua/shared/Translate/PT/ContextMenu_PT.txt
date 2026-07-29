@@ -1,4 +1,0 @@
-ContextMenu_PT = {
-    ContextMenu_EZPZBanking_ATM_UseATM = "Usar ATM",
-    ContextMenu_EZPZBanking_Inventory_OpenLetter = "Abrir Carta",
-}

@@ -1,0 +1,205 @@
+Jusblazm's Source Available License v1.0
+
+Copyright © 2025-2026 Jusblazm
+
+All rights not expressly granted by this license are reserved by the copyright holder.
+
+1. Purpose
+
+This project is made publicly available so that others may inspect, study, and learn from its source code and design.
+
+The source code may be viewed and analyzed for personal study, educational purposes, and understanding of the project's development techniques.
+
+This license intentionally provides source availability without granting open-source rights.
+
+Except where this license explicitly grants permission, access to this project does not grant permission to copy, modify, redistribute, publish, or create derivative works from the project.
+
+2. No Implied Rights
+
+Accessing, downloading, viewing, possessing, or interacting with this project does not grant any license or permission except those expressly provided by this license.
+
+The public availability of this project, including availability through repositories, websites, or platforms such as Steam Workshop or Git hosting services, does not create any implied permission to reuse, modify, distribute, or create derivative works.
+
+3. Definitions
+
+3.1 Project
+
+"Project" refers to this software project, including its source code, scripts, assets, documentation, examples, configuration files, and other materials distributed by the copyright holder.
+
+3.2 Derivative Work
+
+"Derivative Work" means any work based upon, adapted from, modified from, translated from, ported from, or incorporating substantial portions of the protected expression contained within this project.
+
+Examples include:
+
+- Modified versions of this project.
+- Forks or alternative distributions.
+- Ports to other games, platforms, or engines.
+- Projects incorporating substantial portions of this project's source code or implementation.
+- Recreated versions that reuse protected source material.
+
+3.3 Public API
+
+A "Public API" means only functions, events, hooks, interfaces, or integration points explicitly designated in writing by the copyright holder as Public API.
+
+Public visibility within source code does not automatically make a component part of the Public API.
+
+4. Permissions
+
+Subject to the restrictions in this license, you may:
+
+- Download this project.
+- View and inspect the source code.
+- Study the implementation for educational purposes.
+- Learn from programming techniques, organization, and design decisions.
+- Use documented Public APIs provided by this project for interoperability with other Project Zomboid mods.
+- Use files explicitly identified as Examples or Templates according to Section 7.
+
+5. Restrictions
+
+Unless you receive explicit written permission from the copyright holder, you may not:
+
+- Copy source code from this project.
+- Reproduce or incorporate portions of the implementation into another project.
+- Copy individual functions, classes, modules, scripts, or systems.
+- Create modified versions of this project.
+- Publish forks or redistributed versions of this project.
+- Redistribute this project's source code.
+- Redistribute modified copies of this project.
+- Repackage this project under another name.
+- Use this project's specific implementation as the basis for another mod or software project.
+- Remove or alter copyright notices.
+- Claim authorship, ownership, or original creation of this project or portions of this project.
+
+Studying, understanding, or learning from this project does not grant permission to reuse its implementation.
+
+6. Public API Exception
+
+Some projects released under this license may provide documented Public APIs intended for interoperability with other Project Zomboid mods.
+
+Where a Public API is provided, you may:
+
+- Call documented API functions.
+- Depend upon this project as a required dependency.
+- Create and distribute your own Project Zomboid mod that integrates with the documented Public API.
+
+This permission applies only to the documented interface.
+
+It does not grant permission to:
+
+- Copy or reuse the implementation behind the API.
+- Copy internal helper functions.
+- Copy internal modules or files.
+- Access undocumented internal functionality.
+- Modify or redistribute this project.
+- Create derivative works based on the implementation.
+
+Documentation, examples, comments, function names, file names, or visible source code do not automatically create Public API rights unless explicitly designated as such by the copyright holder.
+
+Compatibility with this project does not imply endorsement, sponsorship, partnership, or affiliation with the copyright holder.
+
+7. Example Projects and Templates
+
+Some repositories released under this license may include files or directories explicitly identified as:
+
+- Examples.
+- Templates.
+- Example Mods.
+- Template Mods.
+- Sample Projects.
+- Similar educational resources.
+
+Example and Template files are additionally governed by the accompanying Jusblazm's Example and Template License.
+
+Only files individually identified by name, documentation, or explicit notice as Examples or Templates are covered by this section.
+
+A directory location alone does not change the license status of a file.
+
+Unless otherwise stated, Example and Template files may be:
+
+- Copied into another Project Zomboid mod.
+- Modified.
+- Extended.
+- Redistributed as part of another Project Zomboid mod.
+- Used for educational or compatibility purposes.
+
+Included example assets may only be reused where those assets are explicitly provided as part of the Example or Template resource.
+
+You may not:
+
+- Misrepresent Example or Template files as your own original creation.
+- Remove copyright notices where present.
+- Redistribute Example or Template resources as standalone replacement projects.
+- Use Example or Template permissions as authorization to copy the main project's framework, systems, architecture, or implementation.
+
+All files not explicitly identified as Examples or Templates remain governed exclusively by this license.
+
+8. Educational Use
+
+This project is provided in a form that allows others to learn from its development.
+
+You are encouraged to study:
+
+- Programming techniques.
+- Lua scripting practices.
+- Project organization.
+- Mod development practices.
+- Design approaches.
+
+Educational study does not grant permission to copy, extract, reproduce, or reuse the project's implementation.
+
+9. Permission Requests
+
+Written permission from the copyright holder is required if you wish to:
+
+- Publish a modified version of this project.
+- Create a fork.
+- Continue development of this project as a separate project.
+- Include portions of this project's implementation in another mod.
+- Port this project.
+- Reuse source code from this project.
+- Create derivative works based upon this project.
+
+Permission may be granted or denied at the sole discretion of the copyright holder.
+
+10. Ownership
+
+All original source code, scripts, assets, documentation, artwork, text, designs, and other original content remain the exclusive intellectual property of the copyright holder.
+
+No ownership rights are transferred through access to this project.
+
+11. Trademarks and Branding
+
+This license does not grant permission to use the project name, trademarks, logos, branding, or other identifiers associated with the copyright holder.
+
+Use of the project's name or branding in references, compatibility statements, or descriptions must not imply endorsement, sponsorship, partnership, or official affiliation.
+
+12. Third-Party Content
+
+Any third-party assets, code, or materials included within this project remain the property of their respective owners and are subject to their own licenses or permissions.
+
+This license does not grant rights to third-party content.
+
+13. Warranty and Liability
+
+This software is provided "as is", without warranty of any kind, express or implied.
+
+The copyright holder shall not be liable for damages, losses, or claims arising from the use, inability to use, modification, or distribution of this software.
+
+14. Project Zomboid and Steam Workshop
+
+Nothing in this license supersedes or overrides applicable policies, agreements, or requirements imposed by:
+
+- The Indie Stone's Project Zomboid Modding Policy: https://projectzomboid.com/blog/modding-policy/
+- Valve's Mod Content Usage Policy: https://developer.valvesoftware.com/wiki/Mod_Content_Usage
+- The Steam Subscriber Agreement: https://store.steampowered.com/subscriber_agreement/
+
+Users and developers are responsible for complying with these policies in addition to this license.
+
+Where these policies impose additional restrictions, those restrictions remain applicable.
+
+15. Contact
+
+Permission requests should be directed to the copyright holder through the project's preferred contact method.
+
+Unless permission is explicitly granted in writing, all restrictions contained within this license remain in effect.

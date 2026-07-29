@@ -1,4 +1,0 @@
-ContextMenu_EN = {
-    ContextMenu_EZPZBanking_ATM_UseATM = "Use ATM",
-    ContextMenu_EZPZBanking_Inventory_OpenLetter = "Open Letter",
-}
