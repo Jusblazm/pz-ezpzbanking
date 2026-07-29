@@ -1,3 +1,0 @@
-Recipe_UA = {
-    Recipe_CreditCardThiefTrait = "Риса: Злодій кредитних карток",
-}

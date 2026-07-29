@@ -1,5 +1,0 @@
-ItemName_PT = {
-    ItemName_Base.BankPreApproved = "Oferta de Crédito Pré-Aprovada",
-    ItemName_Base.BankApprovedCardInside = "Oferta de Crédito Aprovada (Cartão Incluído)",
-    ItemName_Base.CreditCardThiefMagazine = "Revista: Vale Quase Tanto Quanto",
-}

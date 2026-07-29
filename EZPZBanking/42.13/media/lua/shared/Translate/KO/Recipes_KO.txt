@@ -1,3 +1,0 @@
-Recipe_KO = {
-    Recipe_CreditCardThiefTrait = "신용카드 도둑 특성",
-}

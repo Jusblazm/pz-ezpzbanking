@@ -1,3 +1,0 @@
-Recipe_JP = {
-    Recipe_CreditCardThiefTrait = "クレジットカード泥棒の特性",
-}

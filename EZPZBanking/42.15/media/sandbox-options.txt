@@ -1,9 +1,0 @@
-VERSION = 1,
-
-option EZPZBanking.OwnerPIN
-{
-    type = boolean,
-    default = false,
-    page = EZPZBanking,
-    translation = EZPZBanking_OwnerPIN,
-}

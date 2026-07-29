@@ -1,3 +1,0 @@
-Recipe_CH = {
-    Recipe_CreditCardThiefTrait = "信用卡竊賊特性",
-}
