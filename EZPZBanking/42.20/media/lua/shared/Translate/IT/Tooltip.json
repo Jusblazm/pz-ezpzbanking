@@ -1,9 +1,0 @@
-{
-    "Tooltip_EZPZBanking_ATMUI_PinEntry_Normal": "Inserisci il tuo PIN",
-    "Tooltip_EZPZBanking_ATMUI_PinEntry_Error": "Il PIN deve avere 2 cifre",
-    "Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect": "PIN errato. Tentativi: ",
-    "Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal": "Inserisci l'importo",
-    "Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney": "Fondi insufficienti per il deposito",
-    "Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient": "Fondi insufficienti",
-    "Tooltip_EZPZBanking_AdminPanelUI_AdminPanelButton": "Accedi e gestisci qui i dettagli dei conti bancari dei giocatori"
-}

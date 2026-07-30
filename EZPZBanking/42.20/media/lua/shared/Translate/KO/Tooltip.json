@@ -1,9 +1,0 @@
-{
-    "Tooltip_EZPZBanking_ATMUI_PinEntry_Normal": "PIN을 입력하세요",
-    "Tooltip_EZPZBanking_ATMUI_PinEntry_Error": "PIN은 숫자 2자리여야 합니다",
-    "Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect": "잘못된 PIN. 시도 횟수: ",
-    "Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal": "금액을 입력하세요",
-    "Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney": "입금할 돈이 부족합니다",
-    "Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient": "잔액 부족",
-    "Tooltip_EZPZBanking_AdminPanelUI_AdminPanelButton": "여기에서 플레이어의 은행 계좌 정보를 확인하고 관리합니다"
-}
