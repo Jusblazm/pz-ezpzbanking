@@ -125,7 +125,7 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
         local hackingLevel = 0
         local pinRange = 0
         
-        if HackingSkill and Perks.Hacking then
+        if HackingSkill_API and Perks.Hacking then
             hackingLevel = HackingSkill_API.getLevel(player)
             pinRange = math.floor(hackingLevel * 2)
         end
@@ -158,7 +158,7 @@ function EZPZBanking_ATMUI.ATMWindow:onSubmitPIN()
         self.pinEntry:setText("")
         self.pinEntry:setTooltip(getText("Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect") .. tostring(modData.attempts) .. "/3")
 
-        if HackingSkill and Perks.Hacking then
+        if HackingSkill_API and Perks.Hacking then
             HackingSkill_API.addXP(player, 2)
         end
 
