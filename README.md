@@ -65,7 +65,7 @@ EZPZBanking_API.giveMoney(player, amount)
 | 🇳🇴 Norwegian            | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇵🇭 Filipino             | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇵🇱 Polish               | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇵🇹 Portuguese           | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
+| 🇵🇹 Portuguese           | █████████░ 91% | 48/53     | 🔃 In Progress |
 | 🇧🇷 Brazilian Portuguese | █████████░ 91% | 48/53     | 🔃 In Progress |
 | 🇷🇴 Romanian             | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇷🇺 Russian              | █████████░ 91% | 48/53     | 🔃 In Progress |
