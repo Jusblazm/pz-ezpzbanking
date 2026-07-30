@@ -48,30 +48,30 @@ EZPZBanking_API.giveMoney(player, amount)
 | 🇺🇸 English              | ██████████ 100% | 53/53     | ✅ Done      |
 | 🇦🇷 Argentina            | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🏴 Catalan             | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇹🇼 Traditional Chinese  | █████████░ 91% | 48/53     | 🔃 In Progress |
-| 🇨🇳 Simplified Chinese   | █████████░ 91% | 48/53     | 🔃 In Progress |
+| 🇹🇼 Traditional Chinese  | ██████████ 96% | 51/53     | 🔃 In Progress |
+| 🇨🇳 Simplified Chinese   | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇨🇿 Czech                | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇩🇰 Danish               | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇩🇪 German               | █████████░ 91% | 48/53     | 🔃 In Progress |
-| 🇪🇸 Spanish              | █████████░ 91% | 48/53     | 🔃 In Progress |
+| 🇩🇪 German               | ██████████ 96% | 51/53     | 🔃 In Progress |
+| 🇪🇸 Spanish              | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇫🇮 Finnish              | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇫🇷 French               | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇭🇺 Hungarian            | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇮🇩 Indonesian           | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇮🇹 Italian              | █████████░ 91% | 48/53     | 🔃 In Progress |
-| 🇯🇵 Japanese             | █████████░ 91% | 48/53     | 🔃 In Progress |
-| 🇰🇷 Korean               | █████████░ 91% | 48/53     | 🔃 In Progress |
-| 🇳🇱 Dutch                | █████████░ 91% | 48/53     | 🔃 In Progress |
+| 🇮🇹 Italian              | ██████████ 96% | 51/53     | 🔃 In Progress |
+| 🇯🇵 Japanese             | ██████████ 96% | 51/53     | 🔃 In Progress |
+| 🇰🇷 Korean               | ██████████ 96% | 51/53     | 🔃 In Progress |
+| 🇳🇱 Dutch                | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇳🇴 Norwegian            | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇵🇭 Filipino             | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇵🇱 Polish               | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇵🇹 Portuguese           | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇧🇷 Brazilian Portuguese | █████████░ 91% | 48/53     | 🔃 In Progress |
+| 🇵🇹 Portuguese           | ██████████ 96% | 51/53     | 🔃 In Progress |
+| 🇧🇷 Brazilian Portuguese | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇷🇴 Romanian             | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇷🇺 Russian              | █████████░ 91% | 48/53     | 🔃 In Progress |
+| 🇷🇺 Russian              | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇹🇭 Thai                 | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇹🇷 Turkish              | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇺🇦 Ukrainian            | █████████░ 91% | 48/53     | 🔃 In Progress |
+| 🇺🇦 Ukrainian            | ██████████ 96% | 51/53     | 🔃 In Progress |
 <!-- AUTO-GENERATED-TABLE:END -->
 
 ### Translation Notice
