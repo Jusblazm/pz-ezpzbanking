@@ -1,23 +1,23 @@
--- -- EZPZBanking_GydeTraitMagazines
+-- EZPZBanking_GydeTraitMagazines
 
--- --[[
---     this patch adds a trait magazine for EZPZ Banking 
---     traits in the same style as Gyde's Trait Magazines
--- ]]
+--[[
+    this patch adds a trait magazine for EZPZ Banking 
+    traits in the same style as Gyde's Trait Magazines
+]]
 
--- local function addCreditCardThiefMagazine()
---     if not getActivatedMods():contains("\\GydeTraitMags") then
---         print("[EZPZBanking] General: Gyde Trait Magazines is not installed")
---         return
---     end
+local function addEZPZBankingMagazines()
+    if not getActivatedMods():contains("GydeTraitMags") then
+        print("[EZPZBanking] General: Gyde Trait Magazines is not installed")
+        return
+    end
 
---     if not GydeTraitMags or not GydeTraitMags.magazineTraits then
---         print("[EZPZBanking] General: Gyde Trait Magazines detected, but tables not yet available")
---         return
---     end
+    if not GydeTraitMags or not GydeTraitMags.magazineTraits then
+        print("[EZPZBanking] General: Gyde Trait Magazines detected, but tables not yet available")
+        return
+    end
 
---     GydeTraitMags.magazineTraits["Base.CreditCardThiefMagazine"] = EZPZBankingTraits.CreditCardThief
---     print("[EZPZBanking] General: Gyde Trait Magazines detected, creating a Credit Card Thief Trait Magazine")
--- end
+    GydeTraitMags.magazineTraits["Base.CreditCardThiefMagazine"] = EZPZBankingTraits.CreditCardThief
+    print("[EZPZBanking] General: Gyde Trait Magazines detected, creating a Credit Card Thief Trait Magazine")
+end
 
--- Events.OnGameBoot.Add(addCreditCardThiefMagazine)
+Events.OnGameBoot.Add(addEZPZBankingMagazines)
