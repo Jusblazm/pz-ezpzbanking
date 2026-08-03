@@ -246,7 +246,7 @@ function EZPZBanking_Utils.canUseATMSettings()
     local MailOrderCatalogs = nil
 
     if gameVersion and tonumber(gameVersion) >= 42 then
-        MailOrderCatalogs = "\\JusMailOrderCatalogs"
+        MailOrderCatalogs = "JusMailOrderCatalogs"
     else
         MailOrderCatalogs = "JusMailOrderCatalogs"
     end
