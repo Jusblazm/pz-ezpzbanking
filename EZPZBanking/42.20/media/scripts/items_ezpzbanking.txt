@@ -35,17 +35,16 @@ module Base
 
     item CreditCardThiefMagazine
     {
-        DisplayCategory     = SkillBook,
+        DisplayCategory     = RecipeResource,
         ItemType            = base:literature,
         Weight              = 0.5,
         Icon                = CreditCardThiefMagazine,
         BoredomChange       = -20,
         StressChange        = -15,
         LearnedRecipes      = CreditCardThiefTrait,
-        DisappearOnUse      = false,
         StaticModel         = Magazine,
         WorldStaticModel    = MagazineGround,
         Tags                = base:magazine,
-        OnCreate            = SpecialLootSpawns.OnCreateRecipeMagazine,
+        OnCreate            = ItemCodeOnCreate.onCreateRecipeMagazine,
     }
 }
