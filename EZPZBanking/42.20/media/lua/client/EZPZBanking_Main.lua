@@ -37,11 +37,11 @@ local function onGlobalKeyPressed(key)
         end
 
         -- close ISEZPZBankingAdminUI
-        if EZPZBanking_ISEZPZBankingAdminUI.instance and EZPZBanking_ISEZPZBankingAdminUI.instance:isVisible() then
-            EZPZBanking_ISEZPZBankingAdminUI.instance:setVisible(false)
-            EZPZBanking_ISEZPZBankingAdminUI.instance:removeFromUIManager()
-            EZPZBanking_ISEZPZBankingAdminUI.instance = nil
-        end
+        -- if EZPZBanking_ISEZPZBankingAdminUI.instance and EZPZBanking_ISEZPZBankingAdminUI.instance:isVisible() then
+        --     EZPZBanking_ISEZPZBankingAdminUI.instance:setVisible(false)
+        --     EZPZBanking_ISEZPZBankingAdminUI.instance:removeFromUIManager()
+        --     EZPZBanking_ISEZPZBankingAdminUI.instance = nil
+        -- end
     end
 end
 
