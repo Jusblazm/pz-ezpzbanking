@@ -77,6 +77,10 @@ EZPZBanking_API.giveMoney(player, amount)
 ### Translation Notice
 Translations are provided by AI for your benefit. There are bound to be some errors. If you would like to contribute, please reach out to me; I will happily replace AI-generated translations.
 
+## Translation Credits
+A hearty thank you to everyone who contributed to translations for EZPZ Banking.\
+🇫🇷 French: [Mastodonte](https://steamcommunity.com/id/MastodonteX/)
+
 ## Support
 Come find me on discord! Be sure to grab the Project Zomboid Modding Role once you arrive.\
 [![Discord](https://raw.githubusercontent.com/Jusblazm/pz-archive/refs/heads/main/_imgs/discordinvite.png)](https://discord.gg/yqstRpuGXy)
