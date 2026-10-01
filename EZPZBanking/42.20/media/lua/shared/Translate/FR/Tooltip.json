@@ -1,0 +1,10 @@
+{
+    "Tooltip_EZPZBanking_ATMUI_PinEntry_Normal": "Entrez votre PIN",
+    "Tooltip_EZPZBanking_ATMUI_PinEntry_Error": "Le PIN doit être au moins 2 chiffres",
+    "Tooltip_EZPZBanking_ATMUI_PinEntry_Incorrect": "PIN incorrect. Essais : ",
+    "Tooltip_EZPZBanking_ATMUI_AmountEntry_Normal": "Entrez montant",
+    "Tooltip_EZPZBanking_ATMUI_AmountEntry_NoMoney": "Pas assez d'argent pour déposer",
+    "Tooltip_EZPZBanking_ATMUI_AmountEntry_Insufficient": "Fonds insuffisant",
+
+    "Tooltip_EZPZBanking_AdminPanelUI_AdminPanelButton": "Accédez et gérer les détails de votre banque ici"
+}

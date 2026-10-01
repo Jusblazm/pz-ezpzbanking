@@ -1,0 +1,41 @@
+{
+    "UI_trait_CreditCardThief": "Voleur de carte de crédit",
+    "UI_trait_CreditCardThief_Description": "Vous êtes un voleur de carte de crédit expérimenté. +5 de bonus pour deviner le PIN d'une carte volée.",
+    "UI_profession_BankManager": "Gérant de la banque",
+    "UI_profession_BankManager_Description": "Apparaît avec un nombre aléatoire d'argent.",
+    "UI_profession_Pickpocket": "Pickpocket",
+    "UI_profession_Pickpocket_Description": "Peut voler les portefeuilles des zombies en les poussant.",
+
+    "UI_EZPZBanking_Generic_SubmitButton": "Entrer",
+    "UI_EZPZBanking_Generic_ConfirmButton": "Confirmer",
+    "UI_EZPZBanking_Generic_BackButton": "Retour",
+    "UI_EZPZBanking_Generic_CancelButton": "Annuler",
+    "UI_EZPZBanking_Generic_CloseButton": "Fermer",
+
+    "UI_EZPZBanking_ATMUI_NoCardFound": "Aucune carte de crédit disponible",
+    "UI_EZPZBanking_ATMUI_CardDestroyed": "Carte détruite !",
+    "UI_EZPZBanking_ATMUI_Balance": "Montant Restant : $",
+    "UI_EZPZBanking_ATMUI_DepositButton": "Déposer",
+    "UI_EZPZBanking_ATMUI_WithdrawButton": "Retirer",
+    "UI_EZPZBanking_ATMUI_SettingsButton": "Paramètres",
+    "UI_EZPZBanking_ATMUI_UninstallButton": "Je veux retirer sûrement le banking EZPZ",
+    "UI_EZPZBanking_ATMUI_ATMTitle": "Distributeur de la banque Knox",
+
+    "UI_EZPZBanking_CardSelectorUI_NoCardsFound": "Aucune carte de crédit disponible",
+    "UI_EZPZBanking_CardSelectorUI_Attempts": "Essais :",
+    "UI_EZPZBanking_CardSelectorUI_Loading": "Chargement...",
+    "UI_EZPZBanking_CardSelectorUI_Refresh": "Rafraichir",
+    "UI_EZPZBanking_CardSelectorUI_CardSelectorTitle": "Choisissez une carte de crédit",
+
+    "UI_EZPZBanking_SettingsUI_ReportStolen": "Signaler la carte comme volée",
+    "UI_EZPZBanking_SettingsUI_UpdatePIN": "Mettre à jour le PIN",
+    "UI_EZPZBanking_SettingsUI_PINError": "Le PIN doit être au moins 2 chiffres",
+    "UI_EZPZBanking_SettingsUI_OrderCard": "Commander une nouvelle carte de crédit",
+
+    "UI_EZPZBanking_ISEZPZBankingAdminUI_Amount": "Montant",
+    "UI_EZPZBanking_ISEZPZBankingAdminUI_AdminPanelButton": "EZPZ Banking",
+    "UI_EZPZBanking_ISEZPZBankingAdminUI_AdminTitle": "EZPZ Banking - Administrateur",
+
+    "UI_EZPZBanking_UninstallUI_FinalConfirmation": "Je comprends.",
+    "UI_EZPZBanking_UninstallUI_Title": "Retirer EZPZ Banking"
+}

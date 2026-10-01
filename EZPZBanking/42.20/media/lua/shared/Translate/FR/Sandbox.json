@@ -1,0 +1,7 @@
+{
+    "Sandbox_EZPZBanking": "Paramètre de EZPZ Banking",
+    "Sandbox_EZPZBanking_OwnerPIN": "Contourner le code PIN de votre carte",
+    "Sandbox_EZPZBanking_OwnerPIN_tooltip": "Est-ce que le PIN devrait-être entré automatique dans un distributeur de billets lorsqu'elle vous appartient ?",
+    "Sandbox_EZPZBanking_NoHackingMinigame": "Désactiver le mini-jeu de piratage du code PIN",
+    "Sandbox_EZPZBanking_NoHackingMinigame_tooltip": "Cela vous permetera d'accédez directement à un carte qui n'est pas à vous en cliquant sur « Entrer »."
+}
