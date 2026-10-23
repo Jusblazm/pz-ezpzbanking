@@ -55,7 +55,7 @@ EZPZBanking_API.giveMoney(player, amount)
 | 🇩🇪 German               | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇪🇸 Spanish              | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇫🇮 Finnish              | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇫🇷 French               | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
+| 🇫🇷 French               | ██████████ 100% | 53/53     | ✅ Done      |
 | 🇭🇺 Hungarian            | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇮🇩 Indonesian           | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇮🇹 Italian              | ██████████ 96% | 51/53     | 🔃 In Progress |
