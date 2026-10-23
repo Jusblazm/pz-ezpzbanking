@@ -55,7 +55,7 @@ EZPZBanking_API.giveMoney(player, amount)
 | 🇩🇪 German               | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇪🇸 Spanish              | ██████████ 96% | 51/53     | 🔃 In Progress |
 | 🇫🇮 Finnish              | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
-| 🇫🇷 French               | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
+| 🇫🇷 French               | ██████████ 100% | 53/53     | ✅ Done      |
 | 🇭🇺 Hungarian            | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇮🇩 Indonesian           | ░░░░░░░░░░ 0% | 0/53     | ❌ Not Started |
 | 🇮🇹 Italian              | ██████████ 96% | 51/53     | 🔃 In Progress |
@@ -83,7 +83,7 @@ A hearty thank you to everyone who contributed to translations for EZPZ Banking.
 
 ## Support
 Come find me on discord! Be sure to grab the Project Zomboid Modding Role once you arrive.\
-[![Discord](https://raw.githubusercontent.com/Jusblazm/pz-archive/refs/heads/main/_imgs/discordinvite.png)](https://discord.gg/yqstRpuGXy)
+[![Discord](https://raw.githubusercontent.com/Jusblazm/pz-archive/refs/heads/main/_imgs/discordinvite.png)](https://discord.gg/gCqrVTBHSQ)
 
 A simple like and a favorite is more than enough, but if you would like to do more:\
 [![Ko-fi](https://i.imgur.com/vs8dr3R.png)](https://ko-fi.com/jusblazm)
